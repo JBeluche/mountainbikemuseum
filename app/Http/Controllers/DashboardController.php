@@ -22,6 +22,11 @@ class DashboardController extends Controller
     public function index()
     {
 
+        if(Auth::user()->id == 7)
+        {
+            return view('dashboard.admin');
+        }
+
         $payments_query = Payment::orderBy('created_at')->where('user_id', Auth::user()->id)->get();
 
         $payments = $payments_query->reverse();

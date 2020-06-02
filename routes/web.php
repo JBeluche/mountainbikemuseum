@@ -35,6 +35,12 @@ Route::get('/dashboard/subscripties', 'DashboardController@subscriptiesGet');
 Route::get('/dashboard/instellingen', 'DashboardController@instellingen');
 Route::get('/dashboard/help', 'DashboardController@help');
 
+//Pages management
+Route::get('/page/create', 'PagesController@create');
+Route::post('/page/create', 'PagesController@store');
+
+
+
 //Checkout process
 Route::post('/checkout/auth', 'CheckoutController@auth')->name('checkout-auth');
 Route::get('/checkout/auth', 'CheckoutController@auth');

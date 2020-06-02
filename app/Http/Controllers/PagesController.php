@@ -10,6 +10,7 @@ use App\Mail\ContactMeAdmin;
 use App\Mail\Reserveren;
 use App\Mail\ReserverenAdmin;
 use App\Page;
+use App\NavLink;
 use Illuminate\Http\Request;
 use Mail;
 use \Session;
@@ -18,20 +19,69 @@ class PagesController extends Controller
 {
     public function create()
     {
-        return view('pages.create');
+
+        //Get all navigation link
+        $navlinks = App\NavLink::all();
+
+        return view('pages.create')->with(compact('navlinks'));
     }
 
     public function store()
     {
 
-        $path = base_path('resources\views\pages\page\filename.blade.php');
+        //Validate Data 
+        $this->validate(request(), [
+            'name' => 'required',
+            'nav_link_id' => 'required',
+            'lang' => 'required'
+        ]);
 
-        $fp = fopen($path, 'w');
-        fwrite($fp, 'data to be written');
-        fclose($fp);
+        //Create the view for new page
+        $view = new App\View;
+        $view->name = request('name');
+        $view->save();
 
-        return redirect('pages/create')->with('key', 'Your page has been created');
+        $page = new Page;
+        
+        //If navlink is self
+        //Create a navlink
+        //Else
+        if(request('nav_link_id') == 0){
+
+            $navLink = new App\NavLink;
+            $navLink->name = request('name');
+            $navLink->lang = request('lang');
+
+            //Reken uit wat de index moet zijn
+            $maxIndex = NavLink::max('index');
+            $navLink->index = ($maxIndex + 1);
+
+            $navLink->save();
+
+            $page->nav_link_id = $navLink->id;
+
+        }
+        else{
+            $page->nav_link_id = request('nav_link_id');
+        }
+
+
+
+        $page->name = request('name');
+        $page->lang = request('lang');
+        $page->view = $view->name;
+
+        $page->save();
+
+        //Now you need to create the file.
+
+        $basePaht = base_path();
+
+        copy($basePaht. "/resources/views/stored_pages/template.blade.php", $basePaht. "/resources/views/stored_pages/" . $page->name . ".blade.php");
+
     }
+
+
 
     public function show(Page $page)
     {
