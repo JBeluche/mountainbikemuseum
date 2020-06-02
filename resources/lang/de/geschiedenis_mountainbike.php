@@ -1,0 +1,67 @@
+<?php
+
+return [
+    
+    'header_card' => 'Historie des Mountainbiken',
+
+    'text_1' => 'Teil unserer Mission ist es unseren Besuchern über die Entstehung und Geschichte des Mountainbikens zu erzählen. Im Museum sind einige der allerersten Mountainbikes überhaupt zu sehen. An der Hand eines Zeitstrahls im Museum kann man sehen wie sich das Material im Laufe der Zeit entwickelt hat.',
+    'text_2' => 'Wie sich das Mountainbiken generell bis heute entwickelt hat, kann man auf dieser Seite lesen.',
+    'text_3' => 'Das Mountainbiken ist aus einem ausgeuferten Hobby entstanden. Im Film ‘Klunkerz’ aus 2007 wird erzählt wer damals mit dem Mountainbiken angefangen hat und warum es so eine populäre Sportart geworden ist.',
+
+    'heading_1' => 'Marin County, Noord-Californië',
+    'text_4' => 'Die Erfindung des Mountainbiken ist nicht nur einer Person zuzuschreiben. Es gab immer schon Leute die sich offroad ausprobiert haben. Fest steht allerdings, dass das Mountainbiken, so wie wir es heute kennen, in Marin County in Nordkalifornien angefangen hat. In den 70er Jahren hat eine Gruppe von begeisterten Offroad-Fahrern angefangen mit dem Material zu experimentieren. Gary Fischer, Charlie Kelly, Joe Breeze und Tom Ritchey sind bekannte Namen aus dieser Gruppe. Die Freunde hatten damals noch keine Ahnung, dass sie den Anfang machten für eine spätere olympische Sportart! Die Berglandschaft nördlich von San Francisco eignete sich sehr gut für’s Mountainbiken. Der bekannteste Berg der Mountainbike-Geschichte ist Mount Tamalpais mit einer Höhe von 800 m n.n.',
+    'quote_1' => '‘’“Für uns wirkte das das Mountainbiken befreiend. Es war als würde man fliegen.’’',
+    'quote_2' => 'Otis Guy, 2007.',
+
+    'heading_2' => 'Mountainbiken: mit dem Fahrrad ‘offroad’ fahren',
+    'text_5' => 'In den 60er Jahren war man es gewöhnt auf Asphaltstraßen und anderen angelegten Wegen Rad zu fahren. Für das ‘Offroad-Fahren’ war jedoch eine andere Taktik gefragt. Ein normales Fahrrad hatte nicht die richtige Konstruktion und genug Griffigkeit auf Strecken mit Sand, Wurzeln, Schlamm, Wiesen und Steinen. ',
+    'text_6' => 'Nach nur einer Talfahrt hatte man bereits zwei Platten. ',
+    'text_7' => 'Das sollte anders werden. Man wollte stabilere Fahrräder, die auch mehr aushielten. 
+    Man fing an mit alten Schwinn Excelsiors aus den 40er Jahren, die die Freunde ‘Klunkerz’ nannten. Sie fanden alte Fahrräder, entfernten Schutzbleche, Kettenschutz und Tank (dieser Tank hatte keine Funktion und war nur ein Attrappe). Man stellte fest, dass man mit den schwereren und stabileren Fahrrädern viel mehr Möglichkeiten hatte, ganz einfach weil das Material mehr aushielt. ',
+
+    'heading_3' => 'Clubs',
+    'text_8' => 'Die Mitglieder der Larkspur Canyon Gang waren die ersten die auf dem Mount Talmapais gefahren sind. Für sie war der Berg ein grosser Spielplatz. Sie wuchsen in seiner Nähe auf und spielten regelmäßig in den Wäldern. Als Teenagers bauten sie dort Hütten und nahmen dabei auch ihre Fahrräder mit. Sie bekamen einen Kick, wenn sie die die Hänge hinunter rasten, obwohl ihre Fahrräder für die Schotterpisten nicht geeignet waren. Auch sie bastelten an ihren Fahrrädern herum, aber nicht so fanatisch wie die Jungs der eher genannten Clubs.',
+    'text_9' => '1972 wurde der Marin County Velo Club Tamalpais durch die eher genannten Männer gegründet. Gary war damals ein Radrennfahrer der Klasse 1. Auch eine Frau war Mitglied des Velo Clubs: Wende Cragg. Sie war bekannt als Königin des Mountenbikens, weil sie die einzige Frau war, die sich damals für das Mountainbiken engagiert hat. Wende legte jede Fahrt mit Fotos und Videos fest. Sie hatte keine Ahnung, dass sie damit Geschichte festlegte.',
+    'text_10' => 'Der Morrow Dirt Club kam während eines organisierten Fahrrad-Events zum Vorschein: ein Club, der die Fahrräder noch weiter entwickelt hatte. Sie hatten dickere Reifen, aber auch Kettengangschaltung, Vorderbremsen und manchmal sogar einen Motor. Dadurch konnten sie viel mehr mit ihren Fahrrädern machen als die Männer vom Velo Club. Der Marin County Velo Club hatte solche Fahrräder noch nie gesehen und ihr Interesse war geweckt. Was sie vor allem freute, war die Tatsache, dass sich auch andere Leute mit der Entwicklung von Fahrrädern beschäftigten. Joe Breeze hatte lange versucht den Morrow Dirt Club aufzufinden, doch der Club war inzwischen aufgelöst. Joe übernahm ihre Mechanik.',
+    'text_11' => 'Da der Morrow Dirt Club nicht zu finden war, bekam dieser erst 20 Jahre später die Anerkennung für das Hinzufügen von Kettengangschaltungen und Vorderbremsen.',
+
+      //Timeline
+    'timeline_title' => 'Zeitstrahl',
+    'timeline_intro' => 'Den Ursprung des Mountainbiken findet man Ende der 60er / Anfang der 70er Jahre: Das Zeitalter der Hippys, welches sich dadurch kennzeichnete, dem “Normalen” zu entfliehen. Viele machten das mit Rock ’n’ Roll, Festivals, Drogen und Alkohol. Andere wiederum machten das mit Radfahren in der Natur (manchmal auch in Kombination von beidem…). Ursprünglich wurden dafür Fahrräder aus den 30er Jahren benutzt. Diese hatten dickere Reifen. Diese Reifen wurden wegen ihrer Grösse auch Ballonreifen genannt.',
+    
+    'timeline_text_1' => 'In Marin County nehmen immer mehr Jungs ihre Fahrräder auf den Mount Tamalpais mit. Sie merken, dass ihre Fahrräder für das unebene Gelände ungeeignet sind. Trotzdem haben sie Freude daran die Schotterpisten hinunter zu rasen und herauszufinden, wie sie ihre Fahrräder dafür stabiler machen können. Dafür benutzen sie ‘Klunkerz’, Fahrräder aus der Vorkriegszeit, mit dicken Reifen. Diese Fahrräder konnte man relativ einfach umbauen.',
+    'timeline_text_2' => 'Der Velo Club Tamalpais wird gegründet. Mitglieder sind u.a. Carlie Kelly, Gart Fisher, Joe Brezel und Tom Ritchey. Der Velo Club fuhr zuerst noch auf der Straße. Obwohl sie hobbymäßig auf normalen Rennrädern fuhren, kamen sie zu den Versammlungen ihres Clubs mit ihren Klunkerz. Im Velo Club wurde mehr und mehr geforscht mit dem Ziel ihre Fahrräder so umzubauen, dass sie auch zum Fahren in der Berglandschaft geeignet waren.',
+    'timeline_text_3' => 'In de late jaren ‘70 werden de fietsen steeds verder aangepast. Gary Fisher gebruikte onder andere versnellingen en remmen voor motoren: deze gingen nooit kapot! Ondertussen waren er nog steeds single speed bikes, maar het bleef hiermee moeilijk om bergen te beklimmen. Fietsen met versnellingen wonnen dan ook snel terrein. Van singlespeed werd overgeschakeld naar vijf versnellingen en later naar tien versnellingen.',
+    'timeline_text_4' => 'Im Oktober wurde ein Mountainbike-Festival organisiert: Repack, ein Downhill-Wettkampf auf Mount Tamalpais. Viele nennen das den Anfang des Mountainbikesports so wie wir ihn heute kennen. ',
+    'timeline_text_5' => 'Das Mountainbike wurde noch weiter entwickelt. Man überlegte wie man echte Mountainbikes produzieren konnte. Man begann mit schwereren Rahmen und leichteren Einzelteilen. Durch den schweren Rahmen ging es jedoch immer noch sehr mühselig. Craig Mitchell war bekannt für das Bauen von experimentellen Fahrrädern. Er benutzte wissenschaftliche Ansätze für den Bau von Fahrrädern. Das war damals kein Standard. Charlie Kelly wollte, dass Craig eine Kopie von den Excelsior-Rädern baute, die am Anfang benutzt wurden. Es sollte allerdings eine wesentlich leichtere Version werden. Das allererste ‘custum-made’ Mountainbike war geboren. Es funktionierte noch nicht einwandfrei, aber es war eine Erfindung an sich. ',
+    'timeline_text_6' => 'Später baute Joe Breeze selbst Rahmen für Mountainbikes. Davor baute er schon Rahmen für Rennräder. Er spendierte viel Zeit an die technischen Zeichnungen für den Rahmen, denn er wollte, dass die Geometrie stimmte. Er war derjenige, der das erste Mountainbike für’s echte Mountainbiken entworfen hat. Von der ersten Version wurden 10 Mountainbikes gebaut, die zusammen 750 Dollar kosteten. Alle 10 waren bereits verkauft ehe sie überhaupt fertig warten. Joe meldete sich mit diesem Fahrrad zu einen Wettkampf an …und gewann ihn. Man nannte diese Fahrräder daraufhin nach seinem Nachnamen “Breezers”. ',
+    'timeline_text_7' => 'Der erste Artikel über das MTBen erschien in der ‘Co Evolution Quarterly’.
+    Die Fahrer aus Marin County hörten, dass man auch in Colorado Mountainbikes baute und dafür jährlich eine Veranstaltung organisierte. Sie entschlossen sich nach Colorado zu fahren, entdeckten aber schnell, dass man es dort nicht so seriös nahm. Die Tour fand nach einer guten Party statt. Sie erklommen den Mount Crested Butte. Der Autor Richard Nilsen schrieb darüber einen Artikel in der Co Evolution Quarterly. Er beschrieb darin, wie sich das Mountainbiken vom ‘normalen’ Radfahren unterschied und welche Risikos damit verbunden waren. Auch beschrieb er wie die Mountainbikes gebaut wurden und welche Auswirkungen das hatte. Nach der Tour zum Crested Butte erschienen die Männer auf der Titelseite der Zeitschrift Bicycle Sport. Allmählich bekamen sie mehr nationale Aufmerksamkeit und kamen 1979 selbst ins Fernsehen.',
+    'timeline_text_8' => 'Inzwischen wollten Charlie Kelly, Gary Fisher und Tom Ritchey ihre eigenen Fahrräder bauen. Sie hatten eine andere Sicht auf die Eignung und Geometrie des Materials. Tom baute einen Rahmen für Gary, der danach das Fahrrad komplettierte mit den anderen Teilen. Er tat das gemeinsam mit Carlie Kelly unter dem Firmennamen ‘MountainBikes’. Der Name Ritchey war an das Unternehmen gekoppelt weil Tom Ritchey die Rahmen lieferte. Gary Fisher machte allerdings den Fehler aus beiden Namen ein Logo zu entwerfen. Dadurch sah man beide Unternehmen als ein gemeinsames an. Gary Fisher und Charlie Kelly hatten jedoch keine Rechte auf den Namen Ritchey. Gary Fisher kaufte 1982 Charlie Kelly aus und machte mit Tom Ritchey alleine weiter. Ritchey trennte sich später von Fischer, weil er weiterhin ‘custom-made’ Fahrräder bauen wollte. Fisher richtete sich mehr auf die Massenproduktion von Mountainbikes.',
+    'timeline_text_9' => 'Ein weitere großer Spieler in dieser Zeit war Mike Sinyard. Er gründete 1974 ‘Specialized’, ein Unternehmen, welches schwer erhältliche Fahrradteile aus Europa importierte. Gary Fischer kaufte ihm damals schon Fahrradteile ab. Sinyard fragte Fisher ob er seine Mountainbikes ausprobieren durfte. Schließlich ging er noch einen Schritt weiter und schickte die Rahmen 1981 nach China. Dort ließ er sie in großer Auflage produzieren und gab ihnen den Namen ‘Stumpjumpers’. Mike Sinyard gab zu, dass er sich von Tom Ritchey und Gary Fisher hat inspirieren lassen.',
+    'timeline_text_10' => 'Ab 1983 konnte man in jedem Fahrradgeschäft in den USA Mountainbikes kaufen. Inzwischen arbeitete Fisher mit Shimano zusammen, um gemeinsam über neue Produktideen nachzudenken. ',
+    'timeline_text_11' => 'Shimano war in Japan Marktführer auf dem Gebiet von Rennrädern. Specialized folgte in Amerika mit der Herstellung von kompletten Mountainbikes. Danach folgte Europa. Specialized erschien im ‘New York Magazine’ und in ‘Newsweek’. Hiermit begann der Mountainbike-Trubel erst recht. Es wurden mehrere Millionen Mountainbikes verkauft. 1986 gingen mehr Mountainbikes als normale Fahrräder über den Ladentisch',
+    'timeline_text_12' => 'Im Jahr 1996 wurde das Mountainbiken offiziell eine olympische Sportart. Bart Brentjens aus den Niederlanden wurde der erste Olympiasieger. ',
+
+    
+    'fact_title' => 'Wusstest du, dass…?',
+    'fact_fact_1a' => 'Die Fahrräder, die anfänglich benutzt wurden, keine Vorderbremsen und Gangschaltungen hatten. Die allerersten Bikes waren also ‘singlespeed’. Der Fahrer musste das Bike schräg führen und mit den Füssen abbremsen. Normales Bremsen ging nicht, da man dafür zu schnell fuhr. Während dieser Testphase sind viele Unfälle passiert.  ',
+    'fact_fact_1b' => ' Weil man ständig neue Ersatzteile benötigte, war man gut im Aufspüren von Läden die alte Fahrradteile verkauften.',
+    'fact_fact_2' => 'Gary Fisher, Charles Kelly und Tom Ritchey im ersten Jahr 160 MTBs verkauften. Im zweiten Jahr waren es bereits mehr als 1000!',
+    'fact_fact_3' => 'Tom Ritchey alleine manchmal 50 Rahmen in 3 Wochen baute.',
+    'fact_fact_4' => 'Die ursprünglichen Mountainbiker anfänglich Mountainbikes für ihre Freunde gebaut haben. Er gab natürlich nur ein paar Männer, die wussten, wie man das macht. Es wurde als Kunst angesehen. ',
+    'fact_fact_5' => 'Charlie Cunningham ein Ingenieur von Berkley war und dem Fahrradrahmen auch eine Wendung gab: Er baute sie aus Aluminium. Er war kein Athlet, aber er fuhr viel schneller da sein Bike wesentlich leichter war. ',
+
+    'source_title' => 'Quellen',
+    'source_intro_1' => 'Möchtest du mehr lernen über die Geschichte de MTBen?',
+    'source_intro_2' => 'Wir begrüßen dich gerne in unserem Museum! Du kannst aber auch unter den folgenden Links schon mal weiterlesen: ',
+    'source_1' => 'Marin Museum of Bicycling (Englisch)',
+    'source_2' => 'Charlie Kelly (Englisch)',
+    'source_3' => 'Wired (Englisch)',
+    'source_4' => 'Velozine Magazine',
+
+    'alive_title' => 'Geschichte lebendig halten?',
+    'alive_text_1' => 'Möchtest du dich an unserer Mission beteiligen, die Geschichte des MTB-Sports zu erzählen und zu erhalten? ',
+    'alive_text_2' => 'Schau hier',
+    'alive_text_3' => ' welche Möglichkeiten es gibt.',
+];
