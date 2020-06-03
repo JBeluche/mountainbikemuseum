@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Payment;
 use App\Subscription;
+use App\Page;
 
 class DashboardController extends Controller
 {
@@ -24,7 +25,9 @@ class DashboardController extends Controller
 
         if(Auth::user()->id == 7)
         {
-            return view('dashboard.admin');
+
+            $pages = Page::all();
+            return view('dashboard.admin')->with(compact('pages'));
         }
 
         $payments_query = Payment::orderBy('created_at')->where('user_id', Auth::user()->id)->get();

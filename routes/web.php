@@ -38,6 +38,8 @@ Route::get('/dashboard/help', 'DashboardController@help');
 //Pages management
 Route::get('/page/create', 'PagesController@create');
 Route::post('/page/create', 'PagesController@store');
+Route::get("/page/edit/{page}", "PagesController@edit");
+Route::post('page/edit/{page}', 'PagesController@update');
 
 
 

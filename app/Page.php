@@ -9,7 +9,7 @@ class Page extends Model
     
   public function components()
   {
-    return $this->belongsToMany(Component::class);
+    return $this->hasMany(Component::class);
   }
 
   public function navitems(){

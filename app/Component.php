@@ -19,9 +19,9 @@ class Component extends Model
         return $this->hasMany(ImageField::class);
     }
 
-    public function pages()
+    public function componentlists()
     {
-        return $this->belongsToMany(Page::class);
+        return $this->hasOne(ComponentList::class);
     }
 
     public function listItems()

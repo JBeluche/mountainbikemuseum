@@ -81,6 +81,21 @@ class PagesController extends Controller
 
     }
 
+    public function edit($pageId)
+    {
+        //Get the page 
+        $page = Page::where('id', '=', $pageId)->firstOrFail();
+
+        //Get all the components 
+        $components = App\Component::all();
+        return view('pages.edit')->with(compact('page', 'components'));
+    }
+
+    public function update($pageId)
+    {
+        
+    }
+
 
 
     public function show(Page $page)
