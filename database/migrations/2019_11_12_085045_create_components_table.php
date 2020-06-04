@@ -15,12 +15,12 @@ class CreateComponentsTable extends Migration
     {
         Schema::create('components', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInt('page_id');
-            $table->bigInt('component_list_id');
+            $table->unsignedBigInteger('page_id');
+            $table->unsignedBigInteger('component_list_id');
             $table->string('name');
             $table->timestamps();
 
-            $table->foreign('page_id')->references('id')->on('pages')->index('page_component');
+            $table->foreign('page_id')->references('id')->on('pages')->index('page_component_ref');
             $table->foreign('component_list_id')->references('id')->on('component_lists')->index('component_component_list');
 
         });

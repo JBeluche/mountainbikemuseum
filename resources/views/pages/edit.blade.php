@@ -9,26 +9,36 @@
 </head>
 <body>
 
-    <form method="POST" action="/page/edit">
-        @csrf
         <ul class="form-style-1">
          
             <h1>{{$page->name}}</h1>
         </ul>
 
+        <ul>
+            @foreach ($components as $component)
+        <form action="POST">
+           
+                    <li>{{$component->name}}</li>
+            
+                    @endforeach
+                </form>
+    </ul>
+    
 
         {{--Add Component --}}
 
-        <form action="">
+        <form method="POST" action="/page/edit/{{$page->id}}">
+        @csrf
             
-            <select name="lang">
+            <select name="componentListItemId">
         
-                @foreach ($components as $component)
-                    <option value="en">{{$component->name}}</option>
+                @foreach ($componentList as $componentListItem)
+                    <option value="{{$componentListItem->id}}">{{$componentListItem->name}}</option>
                 @endforeach
                 
             </select>
 
+            <input type="text" name="name" placeholder="Naam voor de pagina component">
             <input type="submit" value="Voeg component toe">
         </form>
 

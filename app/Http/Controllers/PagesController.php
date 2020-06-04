@@ -14,6 +14,7 @@ use App\NavLink;
 use Illuminate\Http\Request;
 use Mail;
 use \Session;
+use App\Component;
 
 class PagesController extends Controller
 {
@@ -86,14 +87,25 @@ class PagesController extends Controller
         //Get the page 
         $page = Page::where('id', '=', $pageId)->firstOrFail();
 
+        $components =  Component::where('page_id', '=', $pageId)->get();
+        
         //Get all the components 
-        $components = App\Component::all();
-        return view('pages.edit')->with(compact('page', 'components'));
+        $componentList = App\ComponentList::all();
+        return view('pages.edit')->with(compact('page', 'componentList', 'components'));
     }
 
     public function update($pageId)
     {
-        
+        //Add a component
+        $component = new App\Component;
+        $component->page_id = $pageId;
+        $component->component_list_id = request('componentListItemId');	
+        $component->name = request('name');
+
+        $component->save();
+
+        return redirect('page/edit/' . $pageId);
+
     }
 
 
