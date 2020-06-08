@@ -41,6 +41,9 @@ Route::post('/page/create', 'PagesController@store');
 Route::get("/page/edit/{page}", "PagesController@edit");
 Route::post('page/edit/{page}', 'PagesController@update');
 
+//Component management
+Route::get("/component/edit/{component}", "ComponentController@edit");
+Route::post("/component/edit/{component}", "ComponentController@update");
 
 
 //Checkout process

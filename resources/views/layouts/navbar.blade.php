@@ -10,6 +10,7 @@
 
     <div class="nav__link-container">
 
+     
         {{-------------
         **  This is a ugly way t odisplay all the language (Code can be shorter)
         --------------}}
@@ -104,12 +105,19 @@
     </li>
 @endguest
 
+<div class="nav__item hide-on-ham" data-children-count="0"> 
+    <a href="https://www.facebook.com/sharer/sharer.php?u=<?php Request::url(); ?>" target="_blank" class="dropdown__btn"><img class="dropdown__content--flag-image" alt="Image of the dutch flag" src="/img/share.svg" style="width: 1.75rem;"></a>
+</div>
+
+
         <div class="nav__hamburger">
             <label for="toggle" class="nav__ham-toggle-label">&#9776;</label>   
         </div>
        
 
     </div>
+
+
     <input type="checkbox" id="toggle"> 
     <div class="nav__ham-menu">
 
@@ -181,6 +189,11 @@
           </li>
       @endguest
 
+      <a class=" nav__ham-link" style="width: 1.75rem;" href="https://www.facebook.com/sharer/sharer.php?u=<?php Request::url(); ?>">
+        <img src="/img/share.svg"  alt="">
+    </a>
+
+  
     </div>
 
     

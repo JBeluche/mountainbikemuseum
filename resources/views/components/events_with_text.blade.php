@@ -155,8 +155,7 @@
     </div>--}}
 
     <div class="sidebar-text-area">
-        <h1 class="heading-1 u-margin-bottom-big">{{ __('home.welcome_text_corona') }}  {{-- {{ __('home.welcome_text_title') }} --}}
-        <br>
+         <h1 class="heading-1 u-margin-bottom-big">{{--{{ __('home.welcome_text_corona') }}  {{ __('home.welcome_text_title') }} --}}
             <span style="font-size: 3.5rem">
                 
                 SUPPORT TICKET: RIJDEN OP EEN MUSEUMBIKE 
