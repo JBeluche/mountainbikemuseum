@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Mail;
 use \Session;
 use App\Component;
+use App\PageComponents\HeaderMain;
 
 class PagesController extends Controller
 {
@@ -76,9 +77,9 @@ class PagesController extends Controller
 
         //Now you need to create the file.
 
-        $basePaht = base_path();
+        $basePath = base_path();
 
-        copy($basePaht. "/resources/views/stored_pages/template.blade.php", $basePaht. "/resources/views/stored_pages/" . $page->name . ".blade.php");
+        copy($basePath. "/resources/views/templates/template_top.blade.php", $basePath. "/resources/views/stored_pages/" . $page->name . ".blade.php");
 
     }
 
@@ -96,6 +97,7 @@ class PagesController extends Controller
 
     public function update($pageId)
     {
+        //Check if you need to add a component
         //Add a component
         $component = new App\Component;
         $component->page_id = $pageId;
@@ -103,6 +105,40 @@ class PagesController extends Controller
         $component->name = request('name');
 
         $component->save();
+
+        $page = Page::where('id', '=', $pageId)->firstOrFail();
+        $basePath = base_path();
+        $pageViewLocation = $basePath . '/resources/views/stored_pages/' . $page->name . '.blade.php';
+
+        //Delete the old file
+        unlink($pageViewLocation);
+
+        //Recreate the file, Add top template
+        copy($basePath . "/resources/views/templates/template_top.blade.php", $pageViewLocation);
+
+        $fh = fopen($pageViewLocation, 'a');
+
+        //Loop through all the page's components
+        $components = Component::where('page_id', '=', $pageId)->get();
+
+        foreach($components as $component)
+        {
+            
+        }
+
+        fwrite($fh, '@stop');
+        fclose($fh);
+        
+        //Foreach of them get there images and text
+        //Past in the good order in the file
+        //
+
+
+        $array = array("Text that should be placed");
+        $data = $component->getComponent('Header Main', $array, 'no');
+
+        //Past string in file.
+
 
         return redirect('page/edit/' . $pageId);
 

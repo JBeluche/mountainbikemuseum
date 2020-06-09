@@ -9,7 +9,8 @@
 @section('content')
 @parent
 
-@include('components.header_homepage')
+@include('components/header_homepage')
+
 @include('components.retro-bar-thick')
 
 

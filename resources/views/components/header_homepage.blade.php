@@ -1,6 +1,6 @@
 
 
-<header class="header-main" style="background-image:url(img/home.jpg);">
+<header class="header-main" style="background-image:url(/img/home.jpg);">
 
        <div class="overflow-padding">
               <div class="header-main__dots header-main__dots--left">
@@ -15,7 +15,7 @@
 
        <div class="overflow-padding">
               <div class="header-main__dots header-main__dots--right">
-                     <img src="img/dot-effect-1.png" alt="A set of dot to create an nice effect over the header image">
+                     <img src="/img/dot-effect-1.png" alt="A set of dot to create an nice effect over the header image">
               </div>
        </div>
 

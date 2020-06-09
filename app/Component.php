@@ -29,6 +29,15 @@ class Component extends Model
         return $this->hasMany(ListItem::class);
     }
 
+    public function getComponent($componentName, $text, $image)
+    {
 
+        if($componentName = "Header Main")
+        $data =  
+        "
+            <h1>" . $text[0] . "<h1>
+        ";
     
+        return $data;
+    }
 }
