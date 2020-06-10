@@ -16,6 +16,9 @@ class CreateComponentListsTable extends Migration
         Schema::create('component_lists', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('name');
+            $table->integer('textfields_amount');
+            $table->integer('images_amount');
+            $table->integer('listitem_amount');
             $table->timestamps();
         });
     }

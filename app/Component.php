@@ -14,6 +14,11 @@ class Component extends Model
         return $this->hasMany(Textfield::class);
     }
 
+    public function componenttextfields()
+    {
+        return $this->hasMany(ComponentTextfield::class);
+    }
+
     public function imageFields()
     {
         return $this->hasMany(ImageField::class);
@@ -29,15 +34,21 @@ class Component extends Model
         return $this->hasMany(ListItem::class);
     }
 
-    public function getComponent($componentName, $text, $image)
+
+    //Here I have dumped all the components
+    public function getComponentHTML($componentName, $text, $image)
     {
 
+        //Header main
         if($componentName = "Header Main")
-        $data =  
-        "
-            <h1>" . $text[0] . "<h1>
-        ";
-    
-        return $data;
+        {
+            $data =  
+            "
+                <h1>" . (isset($text[0]) ? $text[0] : '') . "<h1>
+            ";
+        
+            return $data;
+        }
+
     }
 }

@@ -15,7 +15,10 @@ use Illuminate\Http\Request;
 use Mail;
 use \Session;
 use App\Component;
+use App\ComponentList;
+use App\ComponentTextfield;
 use App\PageComponents\HeaderMain;
+use App\TextData;
 
 class PagesController extends Controller
 {
@@ -106,6 +109,20 @@ class PagesController extends Controller
 
         $component->save();
 
+        //Create the textfields for the component
+        $textfields_amount = ComponentList::where('id', '=', $component->component_list_id)->firstOrFail()->textfields_amount;
+
+        for($i = 1; $i <= $textfields_amount; $i++)
+        {
+            $componentTextfield = new App\ComponentTextfield();
+            $componentTextfield->text_data_id = 1;
+            $componentTextfield->component_id = $component->id;
+            $componentTextfield->index = $i;
+
+            $componentTextfield->save();
+        }
+
+
         $page = Page::where('id', '=', $pageId)->firstOrFail();
         $basePath = base_path();
         $pageViewLocation = $basePath . '/resources/views/stored_pages/' . $page->name . '.blade.php';
@@ -121,24 +138,28 @@ class PagesController extends Controller
         //Loop through all the page's components
         $components = Component::where('page_id', '=', $pageId)->get();
 
+        $textdatakeys = array();
+
         foreach($components as $component)
         {
-            
+             //Foreach of them get there images and text
+            $textfields = ComponentTextfield::where('component_id', '=', $component->id)->get();
+            foreach($textfields as $textfield)
+            {
+                $text = '{{ __(\'home.' . TextData::where('id', '=', $textfield->text_data_id)->firstOrFail()->key_name . '\') }}';
+                array_push($textdatakeys, $text);
+            }
+
+            $componentname = ComponentList::where('id', '=', $component->component_list_id)->get();
+            $data = $component->getComponentHTML($componentname, $textdatakeys, 'no');
+
+            //Paste in the good order in the file
+            fwrite($fh, $data);
         }
 
         fwrite($fh, '@stop');
         fclose($fh);
-        
-        //Foreach of them get there images and text
-        //Past in the good order in the file
-        //
-
-
-        $array = array("Text that should be placed");
-        $data = $component->getComponent('Header Main', $array, 'no');
-
-        //Past string in file.
-
+       
 
         return redirect('page/edit/' . $pageId);
 

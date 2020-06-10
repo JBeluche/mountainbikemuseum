@@ -13,12 +13,12 @@
 
     <h1>{{$component->name}}</h1>
 
-    <h2>Voeg elementen toe voor dit component:</h2>
+    <h2>Pas elementen aan:</h2>
 
-    <select name="element">
-        <option value="textfield">Textfield</option>
-        <option value="imageField">Af</option>
-    </select>
+    @foreach ($textfields as $textfield)
+        <input type="text" name="{{$textfield->id}}">
+    @endforeach
+
 
 </body>
 
