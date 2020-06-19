@@ -24,9 +24,9 @@ class Component extends Model
         return $this->hasMany(ImageField::class);
     }
 
-    public function componentlists()
+    public function componentModule()
     {
-        return $this->hasOne(ComponentList::class);
+        return $this->hasOne(ComponentModule::class);
     }
 
     public function listItems()
@@ -38,6 +38,14 @@ class Component extends Model
     //Here I have dumped all the components
     public function getComponentHTML($componentName, $text, $image)
     {
+        ////*********** CLIENT CUSTOMT COMPONENT HANDLER ************////
+        if($componentcustom = 1)
+        {
+            
+        }
+
+
+        ////*********** COMPONENTS ************////
 
         //Header main
         if($componentName = "Header Main")

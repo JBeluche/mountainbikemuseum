@@ -19,6 +19,7 @@ class CreateComponentListsTable extends Migration
             $table->integer('textfields_amount');
             $table->integer('images_amount');
             $table->integer('listitem_amount');
+            $table->integer('is_custom');
             $table->timestamps();
         });
     }

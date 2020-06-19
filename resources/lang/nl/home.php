@@ -5,7 +5,7 @@ $textsdata = App\TextData::all();
 $data = array();
 
 foreach($textsdata as $textdata){
-    $data[$textdata->key_name] = $textdata->text;
+    $data[$textdata->key_name] = $textdata->nl_text;
 }
 
 

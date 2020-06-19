@@ -15,14 +15,14 @@ class CreateTextDataTable extends Migration
     {
         Schema::create('text_data', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('key_name');
+            $table->string('key_name')->unique();
             $table->unsignedBigInteger('category_id');
-            $table->string('lang');
-            $table->text('text');
+            $table->text('nl_text');
+            $table->text('en_text');
+            $table->text('de_text');
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('text_categories');
-            $table->foreign('lang')->references('name')->on('languages');
 
         });
     }

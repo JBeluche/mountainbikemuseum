@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTextCategoriesTable extends Migration
+class CreateComponentModulesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class CreateTextCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('text_categories', function (Blueprint $table) {
+        Schema::create('component_modules', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('categoryname')->unique();
+            $table->text('name');
+            $table->integer('textfields_amount');
+            $table->integer('images_amount');
+            $table->integer('listitem_amount');
+            $table->integer('is_custom');
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ class CreateTextCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('text_categories');
+        Schema::dropIfExists('component_modules');
     }
 }

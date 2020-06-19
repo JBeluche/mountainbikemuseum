@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 use Mail;
 use \Session;
 use App\Component;
-use App\ComponentList;
+use App\ComponentModule;
 use App\ComponentTextfield;
 use App\PageComponents\HeaderMain;
 use App\TextData;
@@ -94,8 +94,8 @@ class PagesController extends Controller
         $components =  Component::where('page_id', '=', $pageId)->get();
         
         //Get all the components 
-        $componentList = App\ComponentList::all();
-        return view('pages.edit')->with(compact('page', 'componentList', 'components'));
+        $componentModules = App\ComponentModule::all();
+        return view('pages.edit')->with(compact('page', 'componentModules', 'components'));
     }
 
     public function update($pageId)
@@ -104,13 +104,13 @@ class PagesController extends Controller
         //Add a component
         $component = new App\Component;
         $component->page_id = $pageId;
-        $component->component_list_id = request('componentListItemId');	
+        $component->component_module_id = request('componentModuleId');	
         $component->name = request('name');
 
         $component->save();
 
         //Create the textfields for the component
-        $textfields_amount = ComponentList::where('id', '=', $component->component_list_id)->firstOrFail()->textfields_amount;
+        $textfields_amount = ComponentModule::where('id', '=', $component->component_module_id)->firstOrFail()->textfields_amount;
 
         for($i = 1; $i <= $textfields_amount; $i++)
         {
@@ -150,7 +150,7 @@ class PagesController extends Controller
                 array_push($textdatakeys, $text);
             }
 
-            $componentname = ComponentList::where('id', '=', $component->component_list_id)->get();
+            $componentname = ComponentModule::where('id', '=', $component->component_module_id)->get();
             $data = $component->getComponentHTML($componentname, $textdatakeys, 'no');
 
             //Paste in the good order in the file

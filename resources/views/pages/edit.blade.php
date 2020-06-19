@@ -31,10 +31,10 @@
     <form method="POST" action="/page/edit/{{$page->id}}">
         @csrf
 
-        <select name="componentListItemId">
+        <select name="componentModuleId">
 
-            @foreach ($componentList as $componentListItem)
-            <option value="{{$componentListItem->id}}">{{$componentListItem->name}}</option>
+            @foreach ($componentModules as $componentModule)
+            <option value="{{$componentModule->id}}">{{$componentModule->name}}</option>
             @endforeach
 
         </select>

@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\component;
+use App\ComponentList;
 use App\ComponentTextfield;
 
 class ComponentController extends Controller
 {
+
+
+    
     public function edit($componentId)
     {
         $component = Component::where('id', '=', $componentId)->firstOrFail();
