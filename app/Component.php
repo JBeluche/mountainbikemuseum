@@ -41,7 +41,11 @@ class Component extends Model
         ////*********** CLIENT CUSTOMT COMPONENT HANDLER ************////
         if($componentcustom = 1)
         {
-            
+            //Foreach contentfield
+            //if content field is text
+            //Get tag, textdata, class. Echo
+            //else if content field is image
+            //get image url get class
         }
 
 
@@ -53,6 +57,7 @@ class Component extends Model
             $data =  
             "
                 <h1>" . (isset($text[0]) ? $text[0] : '') . "<h1>
+                <h1>" . (isset($text[1]) ? $text[1] : '') . "<h1>
             ";
         
             return $data;
