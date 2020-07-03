@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.admin_main')
 
 @section('page-title', 'dashboard')
 
@@ -6,42 +6,59 @@
 
 
 @section('content')
-    @parent
+@parent
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 
 {{--All custom modules here --}}
 
-<ul>
+<div class="admin__modules--container">
+
+    <div class="admin__modules--aanpasbaar-container">
+
+    <h3>Lijst van aanpasbare modules</h3>
+
     @foreach ($componentmodules as $module)
+    
         @if ($module->is_custom === 1)
-            <li>{{$module->name}}</li>
+        <div class="admin__modules--item">
+            {{$module->name}}
+
+            <form action="/component_module/create">
+                <input class="admin__green-button" type="submit" value="Aanpassen">
+            </form>
+        </div>
         @endif
+
     @endforeach
-</ul>
 
-<a href="component_module/create">Maak nieuwe module aan!</a>
+    <form action="/component_module/create" method="POST">
 
+        @csrf
 
-    {{--List of all available modules here. Cannot be edited! --}}
+        <h3>Maak een nieuwe module aan!</h3>
+        <input class="admin__input" type="text" name="name" placeholder="Naam module">
+        <input class="admin__green-button" type="submit" value="Nieuw module">
+
+    </form>
+
+</div>
+
+{{--List of all available modules here. Cannot be edited! --}}
+<div>
+    <h3>Lijst van beschikbaren modulen, niet aanpasbaar!</h3>
     <ul>
         @foreach ($componentmodules as $module)
         @if ($module->is_custom === 0)
-            <li>{{$module->name}}</li>
+        <li>{{$module->name}}</li>
         @endif
-    @endforeach
+        @endforeach
     </ul>
+
+</div>
+
+</div>
+
+
+
 @stop

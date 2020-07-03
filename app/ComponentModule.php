@@ -10,4 +10,9 @@ class ComponentModule extends Model
     {
         return $this->belongsToMany(Component::class);
     }
+
+    public function componentsmoduledatafields()
+    {
+        return $this->hasMany(ComponentModuleDatafield::class);
+    }
 }

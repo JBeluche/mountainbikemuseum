@@ -40,6 +40,7 @@ Route::get('/page/create', 'PagesController@create');
 Route::post('/page/create', 'PagesController@store');
 Route::get("/page/edit/{page}", "PagesController@edit");
 Route::post('page/edit/{page}', 'PagesController@update');
+Route::post('page/show', 'PagesController@show');
 
 //Component management
 Route::get("/component/edit/{component}", "ComponentController@edit");
@@ -47,12 +48,18 @@ Route::post("/component/edit/{component}", "ComponentController@update");
 
 //Component modules 
 Route::get("/component_module/show", "ComponentModuleController@show");
+Route::post("/component_module/create", "ComponentModuleController@store");
+Route::get("/component_module/edit/{componentmodule}", "ComponentModuleController@edit");
+Route::post("/component_module/edit/{componentmodule}", "ComponentModuleController@update");
 
 
 //Data text manager
 Route::get("/text_data/show", "TextdataController@show");
+Route::post("/text_data/show", "TextdataController@show");
+Route::post("/text_data/edit/{textdata}", "TextdataController@update");
 Route::get('/text_data/create', 'TextdataController@create');
 Route::post('/text_data/create', 'TextdataController@store');
+Route::get('/text_data/delete/{textdata}', 'TextdataController@destroy');
 
 //Checkout process
 Route::post('/checkout/auth', 'CheckoutController@auth')->name('checkout-auth');

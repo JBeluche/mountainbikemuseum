@@ -15,6 +15,8 @@
 
     <h2>Pas elementen aan:</h2>
 
+    {{--Get all components fields, --}}
+
     @foreach ($textfields as $textfield)
         <input type="text" name="{{$textfield->id}}">
     @endforeach

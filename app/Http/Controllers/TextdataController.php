@@ -8,12 +8,18 @@ use App\TextData;
 
 class TextdataController extends Controller
 {
-    public function show()
+    public function show(Request $request)
     {
+        $text_categories = TextCategory::All();
 
         $textdatas = TextData::All();
 
-        return view('textdata.show')->with(compact('textdatas'));
+        if($request->has('filter')){
+            $textdatas = TextData::where('category_id', '=', request('filter_id'))->get();
+        }
+
+
+        return view('textdata.show')->with(compact('textdatas', 'text_categories'));
         
     }
 
@@ -46,9 +52,33 @@ class TextdataController extends Controller
 
     }
 
-    public function update()
+    public function update(TextData $textdata)
     {
-        //Check if key doesnt exist already with current language
+        //Check if key doesnt already exist and if everything is submitted      
+        $this->validate(request(), [
+            'key_name' => 'unique:text_data|required',
+            'category_id' => 'required',
+            'en_text' => 'required',
+            'de_text' => 'required',
+            'nl_text' => 'required',
+            ]);
 
+            $textdata->key_name = request('key_name');
+            $textdata->category_id = request('category_id');
+            $textdata->nl_text = request('nl_text');
+            $textdata->en_text = request('en_text');
+            $textdata->de_text = request('de_text');
+
+            $textdata->save();
+            
+            return redirect('/text_data/show');
+    
+    }
+
+    public function destroy(Textdata $textdata)
+    {
+        $textdata->delete();
+
+        return redirect('/text_data/show');
     }
 }

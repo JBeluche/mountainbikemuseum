@@ -1,15 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.admin_main')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="{{ asset('style.css') }}" rel="stylesheet">
-    <title>Add Page</title>
-</head>
+@section('page-title', 'dashboard')
 
-<body>
+
+
+
+@section('content')
+@parent
 
     <ul class="form-style-1">
 
@@ -39,11 +36,8 @@
 
         </select>
 
-        <input type="text" name="name" placeholder="Naam voor de pagina component">
-        <input type="submit" value="Voeg component toe">
+        <input class="admin__input" type="text" name="name" placeholder="Naam voor de pagina component">
+        <input class="admin__green-button" type="submit" value="Voeg component toe">
     </form>
 
-
-</body>
-
-</html>
+@stop

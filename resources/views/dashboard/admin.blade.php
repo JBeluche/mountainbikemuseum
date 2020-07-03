@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.admin_main')
 
 @section('page-title', 'dashboard')
 
@@ -6,46 +6,29 @@
 
 
 @section('content')
-    @parent
+@parent
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
 
-      <h1> Welcome back General </h1>
 
       <a href="page/create">Create a new page!</a>
 
-      <a href="text_data/show">Change the text data!</a>
+      <div class="admin__page--container">
 
-      <a href="component_module/show">Show component modules!</a>
-
-
-      <ul>
         @foreach($pages as $page)
-      <li>{{$page->name}} <a href="/page/edit/{{$page->id}}">Edit</a></li>
-        @endforeach
-      </ul>
-    
-    
-    @stop
+
+        <div class="admin__page--item"> 
+
+           <h3>{{$page->name}}</h3>
+            <p>{{$page->lang}}</p>
+           
+           <a href="/page/edit/{{$page->id}}">Edit</a>
+
+       </div> 
+
+       @endforeach
+
+      </div>
+
+
+
+@stop

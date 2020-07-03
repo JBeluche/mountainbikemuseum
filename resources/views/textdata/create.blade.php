@@ -1,5 +1,4 @@
-
-@extends('layouts.main')
+@extends('layouts.admin_main')
 
 @section('page-title', 'Text data editor')
 
@@ -10,35 +9,35 @@
 @section('content')
 @parent
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+<div class="admin__textdatas-create--container">
 
-    <form style="color:black;" action="/text_data/create" method="POST" >
+    <form class="admin__textdatas-create--form" style="color:black;" action="/text_data/create" method="POST">
         @csrf
-        <br>
-            Naam text
-        <input type="text" name="key_name" placeholder="Naam data text"> <br>
+        <p>Naam text</p>
+        <input type="text" class="admin__textdatas--name paragraph-medium__light" name="key_name"
+            placeholder="Naam data text"> <br>
 
+        <p>Category</p>
         <select name="category_id">
             @foreach ($categories as $category)
                 <option value="{{$category->id}}">{{$category->categoryname}}</option>
             @endforeach
         </select>
-        <br>
-        NL <br>
-        <input type="text" name="nl_text" placeholder="Nederlandse text"><br>
-        DE <br>
-        <input type="text" name="de_text" placeholder="Duitse text"><br>
-        EN <br>
-        <input type="text" name="en_text" placeholder="Engelse text">
+        <p class="paragraph-semibold-16__dark">Nederlands</p>
+        <textarea class="paragraph-small__light" name="nl_text" placeholder="Nederlandse text"></textarea>
+        <p class="paragraph-semibold-16__dark">Duits</p>
+        <textarea class="paragraph-small__light" name="de_text" placeholder="Duitse text"></textarea>
+        <p class="paragraph-semibold-16__dark">Engels</p>
+        <textarea class="paragraph-small__light" name="en_text" placeholder="Engelse text"></textarea>
 
-        <input type="submit" value="submit">
+        <input class="u-margin-top-bottom-small admin__textdatas--save" type="submit" value="Opslaan">
 
     </form>
 
 
+</div>
 
-    @stop
+
+
+
+@stop
