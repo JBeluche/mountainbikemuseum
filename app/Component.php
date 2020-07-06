@@ -39,40 +39,31 @@ class Component extends Model
     public function getComponentHTMLCustomed($component, $module, $data_links, $datafields)
     {
         ////*********** CLIENT CUSTOMT MODULE HANDLER ************////
-       /* if($module->is_custom == 1)
+        
+        foreach($datafields as $datafield)
         {
-            $i = 0;
-
-            foreach($datafields as $datafield)
+            if($datafield->tag = "H1")
             {
-                if($datafield->tag = "H1")
-                {
-                    $data_array = 
-                    "
-                        <h1>" . (isset($text[$i]) ? $text[$i] : '') . " </h1>
-                    ";
-                }
-                $i++;
+                
             }
-            //Get all data fields
-            //If field has data, 
-                //Get data for each fields
+
+        }
+
+        //Here you have the different blueprints. The data is put in the correct place
+        if($module->component_module_blueprint_id == 1)
+        {
+
+            $data_array = 
+            '
+                <section class="centered-text-and-images">' . $datafields . '</section>
+            ';
 
 
-            //Make a
-
-            //Create a section
-            //Get all the fields with there tag
-            //Put the code??
-        }*/
+        }
 
 
-        ////*********** MODULE ************////
+       
 
-        //Header main
-
-        //Filter all the data bij field index(use field id)
-        //Then for all the data
     }
     public function getComponentHTML($component, $module)
     {
@@ -101,7 +92,11 @@ class Component extends Model
 
         }
 
-        if($module->id == 1)
+ ////*********** MODULES ************////
+
+
+        //Home header
+        if($module->id == 5)
         {
             $data =  
             '
@@ -130,6 +125,8 @@ class Component extends Model
             return $data;
         }
 
+
+        //A thick retro bar!
         if($module->id == 2)
         {
             $data =  
@@ -142,6 +139,7 @@ class Component extends Model
             return $data;
         }
 
+        //Testing module
         if($module->id == 3)
         {
             $data =  

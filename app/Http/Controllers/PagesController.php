@@ -101,6 +101,7 @@ class PagesController extends Controller
     public function update($pageId, Request $request)
     {
 
+
         //Setting up page information
         $page = Page::where('id', '=', $pageId)->firstOrFail();
         $basePath = base_path();
@@ -166,13 +167,18 @@ class PagesController extends Controller
             $module = ComponentModule::where('id', '=', $component->component_module_id)->firstOrFail();
 
             $datafields = ComponentModuleDatafield::where('component_module_id', '=', $component->component_module_id)->get();
-
             $data_links = DataLink::where('component_id', '=', $component->id)->get();
 
-            $data = $component->getComponentHTML($component, $module);
+            if($module->is_custom == 0){
+                $data = $component->getComponentHTML($component, $module);
+            }
+            elseif($module->is_custom == 1){
+                $data = $component->getComponentHTMLCustomed($component, $module);
+            }
 
             //Paste in the good order in the file
             fwrite($fh, $data);
+
         }
 
         fwrite($fh, '@stop');
@@ -182,14 +188,12 @@ class PagesController extends Controller
         // Redirecting correctly! Depending on where you came from, redirect to correct page
         /////
  
-        if($request->session()->has('component_edit'))
+        if($request->has('component_edit'))
         {
             $component = $request->session()->pull('component_edit');
-
             return redirect('component/edit/' . $component->id);
         }
       
-
 
         //Default redirect
         return redirect('page/edit/' . $pageId);
@@ -206,18 +210,18 @@ class PagesController extends Controller
         //$components = $page->components()->get();
 
         //Filter the list item op component
-        $listItems = ListItem::whereNull('list_item_id')
+        /*$listItems = ListItem::whereNull('list_item_id')
             ->with('childrenListItems')
-            ->get();
+            ->get();*/
 
         if (isset($page->name)) {
             $view = view('stored_pages.' . $page->view);
-            return $view->with(compact('page', 'components', 'listItems'));
+            return $view->with(compact('page', 'components'));
         } elseif (Session::exists('paymentPage')) {
             $page_name = Session::pull('paymentPage');
             $page = Page::where('name', '>', 'page_name')->firstOrFail();
             $components = $page->components()->get();
-            return view('stored_pages.' . $page_name)->with(compact('page', 'components', 'listItems'));
+            return view('stored_pages.' . $page_name)->with(compact('page', 'components'));
         }
 
         return redirect('home');

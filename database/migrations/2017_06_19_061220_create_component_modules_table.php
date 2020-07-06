@@ -19,8 +19,12 @@ class CreateComponentModulesTable extends Migration
             $table->integer('textfields_amount');
             $table->integer('images_amount');
             $table->integer('listitem_amount');
+            $table->unsignedBigInteger('component_module_blueprint_id')->nullable();
             $table->integer('is_custom');
             $table->timestamps();
+
+            $table->foreign('component_module_blueprint_id')->references('id')->on('component_module_blueprints');
+
         });
     }
 

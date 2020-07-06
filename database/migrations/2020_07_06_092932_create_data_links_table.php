@@ -18,6 +18,7 @@ class CreateDataLinksTable extends Migration
             $table->unsignedBigInteger('field_id');
             $table->unsignedBigInteger('imagedata_id');
             $table->unsignedBigInteger('textdata_id');
+            $table->string('data_type');
             $table->unsignedBigInteger('component_id');
             $table->timestamps();
 

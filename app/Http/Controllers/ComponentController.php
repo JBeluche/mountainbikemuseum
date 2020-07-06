@@ -28,27 +28,33 @@ class ComponentController extends Controller
         return view('component.edit')->with(compact('component', 'datalinks', 'textdatas', 'imagedatas'));
     }
 
-    public function update(Component $component)
+    public function update(Component $component, Request $request)
     {
-        
-        foreach(request('textdata') as $textdata)
+        if($request->has('textdata'))
         {
-            parse_str($textdata, $array); 
+            foreach(request('textdata') as $textdata)
+            {
+                parse_str($textdata, $array); 
 
-            $new_datalink = DataLink::where('id', '=', $array['datalink_id'])->update(['textdata_id' => $array['textdata_id']]);
+                $new_datalink = DataLink::where('id', '=', $array['datalink_id'])->update(['textdata_id' => $array['textdata_id']]);
 
+            }
         }
 
-        foreach(request('imagedata') as $imagedata)
+        if($request->has('imagedata'))
         {
-            parse_str($imagedata, $array); 
-
-            $new_datalink = DataLink::where('id', '=', $array['datalink_id'])->update(['imagedata_id' => $array['imagedata_id']]);
-
+            foreach(request('imagedata') as $imagedata)
+            {
+                parse_str($imagedata, $array); 
+    
+                $new_datalink = DataLink::where('id', '=', $array['datalink_id'])->update(['imagedata_id' => $array['imagedata_id']]);
+    
+            }
         }
+        $request->session()->put('component_edit', $component);
 
         //Remember to update the file as well.
-        return redirect('page/updatefile/' . $component->page_id)->with(['component_edit' => $component] );
+        return redirect('page/updatefile/' . $component->page_id);
 
     }
 
@@ -57,13 +63,7 @@ class ComponentController extends Controller
         $page_id = $component->page_id;
 
         //Check for all the links to this component
-        $textfields = ComponentTextfield::where('component_id', '=', $component->id)->get();
         $datalinks = DataLink::where('component_id', '=', $component->id)->get();
-
-        foreach($textfields as $textfield)
-        {
-            $textfield->delete();
-        }
 
         foreach($datalinks as $datalink)
         {

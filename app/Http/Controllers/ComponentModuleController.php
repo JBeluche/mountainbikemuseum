@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\ComponentModule;
 use App\ComponentModuleDatafield;
 use App\AvailableTag;
+use App\ComponentModuleBlueprint;
 
 
 class ComponentModuleController extends Controller
@@ -13,23 +14,26 @@ class ComponentModuleController extends Controller
     public function show()
     {
         $componentmodules = ComponentModule::All();
+        $blueprints = ComponentModuleBlueprint::All();
 
-        return view('component_module.show')->with(compact('componentmodules'));
+        return view('component_module.show')->with(compact('componentmodules', 'blueprints'));
     }
     
     public function store()
     {
         $this->validate(request(), [
             'name' => 'required',
+            'blueprint' => 'required',
         ]);
 
         //Create a module and move on to edit it
         $module = new ComponentModule;
         $module->name = request('name');
         $module->is_custom = 1;
-        $module->images_amount = 1;
-        $module->textfields_amount = 1;
-        $module->listitem_amount = 1;
+        $module->images_amount = 0;
+        $module->textfields_amount = 0;
+        $module->listitem_amount = 0;
+        $module->component_module_blueprint_id = request('blueprint');
         $module->save();
 
         return redirect('/component_module/edit/'. $module->id);
@@ -71,9 +75,10 @@ class ComponentModuleController extends Controller
                 if($tag->name == 'img'){
                     $datafield->data_type = 'img';
                 }
-                else[
+                else{
                     $datafield->data_type = 'text';
-                ]
+                }
+                
 
             $datafield->save();
         }
