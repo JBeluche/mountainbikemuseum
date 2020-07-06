@@ -57,12 +57,24 @@ class ComponentModuleController extends Controller
         ]);
 
         if($request->has('add')){
+        
+
             //Add new module data field
             $datafield = new ComponentModuleDatafield;
             $datafield->tag_id = request('tag_id');
             $datafield->component_module_id = $moduleId;
             $datafield->index = request('index');
             $datafield->name = request('name');
+
+                //Get the data type from the tag
+                $tag = AvailableTag::where('id', '=', request('tag_id'))->firstOrFail();
+                if($tag->name == 'img'){
+                    $datafield->data_type = 'img';
+                }
+                else[
+                    $datafield->data_type = 'text';
+                ]
+
             $datafield->save();
         }
 
