@@ -40,11 +40,13 @@ Route::get('/page/create', 'PagesController@create');
 Route::post('/page/create', 'PagesController@store');
 Route::get("/page/edit/{page}", "PagesController@edit");
 Route::post('page/edit/{page}', 'PagesController@update');
+Route::get('page/updatefile/{page}', 'PagesController@update');
 Route::post('page/show', 'PagesController@show');
 
 //Component management
 Route::get("/component/edit/{component}", "ComponentController@edit");
 Route::post("/component/edit/{component}", "ComponentController@update");
+Route::get("/component/delete/{component}", "ComponentController@delete");
 
 //Component modules 
 Route::get("/component_module/show", "ComponentModuleController@show");

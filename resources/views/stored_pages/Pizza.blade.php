@@ -11,15 +11,7 @@
 
 
 
-                <h1>{{ __('home.not_found') }}<h1>
-                <h1><h1>
-            
-                <h1>{{ __('home.not_found') }}<h1>
-                <h1>{{ __('home.not_found') }}<h1>
-            
-                <h1>{{ __('home.not_found') }}<h1>
-                <h1>{{ __('home.not_found') }}<h1>
-            
-                <h1>{{ __('home.not_found') }}<h1>
-                <h1>{{ __('home.not_found') }}<h1>
+                <h1>{{ __('home.not_found') }}</h1>
+                <h1>{{ __('home.not_found') }}</h1>
+                <img src="/img/no_image.png">
             @stop

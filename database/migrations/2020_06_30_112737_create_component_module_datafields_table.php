@@ -16,6 +16,7 @@ class CreateComponentModuleDatafieldsTable extends Migration
         Schema::create('component_module_datafields', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('data_type');
             $table->unsignedBigInteger('tag_id');
             $table->unsignedBigInteger('component_module_id');
             $table->bigInteger('index');

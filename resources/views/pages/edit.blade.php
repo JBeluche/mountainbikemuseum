@@ -16,7 +16,10 @@
     <ul>
         @foreach ($components as $component)
         <li>
-            <h2> {{$component->name}}</h2><a href="/component/edit/{{$component->id}}">Edit Component</a> 
+            <h2> {{$component->name}}</h2>
+            
+            <a href="/component/edit/{{$component->id}}">Edit Component</a> 
+            <a href="/component/delete/{{$component->id}}">Delete</a>
           
         </li>
         @endforeach
@@ -37,7 +40,7 @@
         </select>
 
         <input class="admin__input" type="text" name="name" placeholder="Naam voor de pagina component">
-        <input class="admin__green-button" type="submit" value="Voeg component toe">
+        <input class="admin__green-button" type="submit" name="add_component" value="Voeg component toe">
     </form>
 
 @stop

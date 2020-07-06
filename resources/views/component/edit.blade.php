@@ -1,27 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.admin_main')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="{{ asset('style.css') }}" rel="stylesheet">
-    <title>Add Page</title>
-</head>
+@section('page-title', 'dashboard')
 
-<body>
+
+
+
+@section('content')
+@parent
+
 
     <h1>{{$component->name}}</h1>
 
     <h2>Pas elementen aan:</h2>
 
-    {{--Get all components fields, --}}
+    {{--Get all components fields, filter them by index
+        for text you need a dropdown with all textdatas
+        for images you need a dropdown for all images
+        --}}
+        <form action="/component/edit/{{$component->id}}" method="POST">
 
-    @foreach ($textfields as $textfield)
-        <input type="text" name="{{$textfield->id}}">
+            @csrf
+    @foreach ($datalinks as $datalink)
+
+        
+        @if ($datalink->data_type == 'text')
+
+        <select name="textdata[]" id='{{$datalink->id}}'>
+                @foreach ($textdatas as $textdata)
+                    <option {{$datalink->textdata_id == $textdata->id ? 'selected' : ''}} value="textdata_id={{$textdata->id}}&datalink_id={{$datalink->id}}">{{$textdata->key_name}}</option>
+                @endforeach
+            </select>
+            
+        @elseif ($datalink->data_type == 'img')
+            <select name="imagedata[]">
+                @foreach ($imagedatas as $imagedata)
+                    <option {{$datalink->imagedata_id == $imagedata->id ? 'selected' : ''}} value="imagedata_id={{$imagedata->id}}&datalink_id={{$datalink->id}}">{{$imagedata->filename}}</option>
+                @endforeach
+            </select>
+
+        @endif
+
+   
+
     @endforeach
 
+    <input type="submit" name="component_edit" class="admin__green-button">
+    
+</form>
 
-</body>
+<img src="" alt="">
 
-</html>
+
+
+@stop
