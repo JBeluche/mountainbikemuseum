@@ -10,6 +10,7 @@ use App\TextData;
 use App\DataLink;
 use App\ImageData;
 use DB;
+use App\Page;
 
 class ComponentController extends Controller
 {
@@ -20,12 +21,12 @@ class ComponentController extends Controller
     {
         $component = Component::where('id', '=', $componentId)->firstOrFail();
         $datalinks = DataLink::where('component_id', '=', $component->id)->get();
-
+        $page = Page::where('id', '=', $component->page_id)->firstOrFail();
         $textdatas = TextData::all();
         $imagedatas = ImageData::all();
 
 
-        return view('component.edit')->with(compact('component', 'datalinks', 'textdatas', 'imagedatas'));
+        return view('component.edit')->with(compact('component', 'datalinks', 'textdatas', 'imagedatas', 'page'));
     }
 
     public function update(Component $component, Request $request)

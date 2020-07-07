@@ -9,6 +9,12 @@
 @parent
 
 
+<h1 class="admin__title">Component Editor</h1>
+
+<p>
+    Hier kun je aanpassing maken op de huidige component. Deze component is gekoppelt aan de {{$page->name}} pagina.
+</p>
+
     <h1>{{$component->name}}</h1>
 
     <h2>Pas elementen aan:</h2>

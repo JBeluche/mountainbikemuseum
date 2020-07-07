@@ -36,28 +36,48 @@ class Component extends Model
 
 
     //Here I have dumped all the components
-    public function getComponentHTMLCustomed($component, $module, $data_links, $datafields)
+    public function getComponentHTMLCustomed($component, $module)
     {
         ////*********** CLIENT CUSTOMT MODULE HANDLER ************////
         
-        foreach($datafields as $datafield)
+         //Get all the datafields
+        $component_module_datafields = ComponentModuleDatafield::where('component_module_id', '=', $module->id)->orderBy('index')->get();
+
+        $datafields = array();
+
+        foreach($component_module_datafields as $component_module_datafield)
         {
-            if($datafield->tag = "H1")
-            {
-                
-            }
+
+            $data_link = DataLink::where('field_id', '=', $component_module_datafield->id)->where('component_id', '=', $component->id)->firstOrFail();
+            
+                if($component_module_datafield->data_type == 'text')
+                {
+                    /* HERE YOU CAN SEE ALL THE DIFFERENT TAGS, MIGHT CHANGE THOSE IF DATA CHANGES! */
+                    if($component_module_datafield->tag_id == 1){
+                        $text = '<h1> {{ __(\'home.' . TextData::where('id', '=', $data_link->textdata_id)->firstOrFail()->key_name . '\') }} </h1>';
+                    }
+
+                    array_push($datafields, $text);
+                }
+                elseif($component_module_datafield->data_type == 'img')
+                {
+                    $text = ImageData::where('id', '=',  $data_link->imagedata_id)->firstOrFail()->filename;
+                    array_push($datafields, $text);
+                }
 
         }
 
         //Here you have the different blueprints. The data is put in the correct place
         if($module->component_module_blueprint_id == 1)
         {
+            $imploded_datafields = implode(",", $datafields);
 
             $data_array = 
             '
-                <section class="centered-text-and-images">' . $datafields . '</section>
+                <section class="centered-text-and-images">' . $imploded_datafields . '</section>
             ';
 
+            return $data_array;
 
         }
 

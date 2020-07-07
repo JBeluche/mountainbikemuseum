@@ -33,7 +33,6 @@
 
             <div class="admin__viewer">
 
-                <h1>Page Editor</h1>
 
 
                 @yield('content')
