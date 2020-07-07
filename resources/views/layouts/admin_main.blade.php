@@ -45,5 +45,4 @@
 
     </section>
 
-
     @include('layouts.footer')

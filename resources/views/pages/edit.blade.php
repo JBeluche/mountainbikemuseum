@@ -43,4 +43,7 @@
         <input class="admin__green-button" type="submit" name="add_component" value="Voeg component toe">
     </form>
 
+    <form action="/page/updatefile/{{$page->id}}" method="GET">
+        <input class="admin__green-button" type="submit" name="page_refresh" value="Refresh">
+    </form>
 @stop

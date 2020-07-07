@@ -24,11 +24,11 @@
         @csrf
 
         <label for="tag">Naam</label>
-        <input type="text" class="admin__input" name="name" placeholder="{{$datafield->name}}"> 
+        <input type="text" class="admin__input" name="name" value="{{$datafield->name}}"> 
         <input type="hidden" value="{{$datafield->id}}" name="datafield_id"> 
 
         <label for="index">Index</label>
-        <input name="index" class="admin__input" type="numer" placeholder="{{$datafield->index}}">
+        <input name="index" class="admin__input" type="numer" value="{{$datafield->index}}">
 
         <label for="tag">Tag</label>
         <select name="tag_id">

@@ -101,7 +101,6 @@ class PagesController extends Controller
     public function update($pageId, Request $request)
     {
 
-
         //Setting up page information
         $page = Page::where('id', '=', $pageId)->firstOrFail();
         $basePath = base_path();
@@ -168,7 +167,6 @@ class PagesController extends Controller
 
             $datafields = ComponentModuleDatafield::where('component_module_id', '=', $component->component_module_id)->get();
             $data_links = DataLink::where('component_id', '=', $component->id)->get();
-
             if($module->is_custom == 0){
                 $data = $component->getComponentHTML($component, $module);
             }

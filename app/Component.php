@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class Component extends Model
 {
@@ -47,14 +48,29 @@ class Component extends Model
 
         foreach($component_module_datafields as $component_module_datafield)
         {
+            try {
+                $data_link = DataLink::where('field_id', '=', $component_module_datafield->id)->where('component_id', '=', $component->id)->firstOrFail();
+              } catch (ModelNotFoundException $ex) {
+                //Make a new datalink dummy!
+                $datalink = new DataLink;
+                $datalink->field_id = $component_module_datafield->id;
+                $datalink->imagedata_id = 1;
+                $datalink->textdata_id = 1;
+                $datalink->data_type = $component_module_datafield->data_type;
+                $datalink->component_id = $component->id;
 
-            $data_link = DataLink::where('field_id', '=', $component_module_datafield->id)->where('component_id', '=', $component->id)->firstOrFail();
+                $datalink->save();
+              }
+
             
                 if($component_module_datafield->data_type == 'text')
                 {
                     /* HERE YOU CAN SEE ALL THE DIFFERENT TAGS, MIGHT CHANGE THOSE IF DATA CHANGES! */
                     if($component_module_datafield->tag_id == 1){
                         $text = '<h1> {{ __(\'home.' . TextData::where('id', '=', $data_link->textdata_id)->firstOrFail()->key_name . '\') }} </h1>';
+                    }
+                    elseif($component_module_datafield->tag_id == 2){
+                        $text = '<p> {{ __(\'home.' . TextData::where('id', '=', $data_link->textdata_id)->firstOrFail()->key_name . '\') }} </p>';
                     }
 
                     array_push($datafields, $text);

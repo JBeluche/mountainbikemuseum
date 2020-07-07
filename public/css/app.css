@@ -962,6 +962,23 @@ textarea {
   background-image: url(/img/admin-background.jpg);
   background-size: cover;
 }
+.admin__tile-form {
+  display: grid;
+  padding: 4rem 5rem;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  align-content: center;
+  justify-items: center;
+  grid-row-gap: 2rem;
+  grid-column-gap: 5rem;
+  grid-auto-columns: 100px;
+  grid-auto-flow: column;
+}
+.admin__tile-form :last-child {
+  grid-column: 1/-1;
+}
 .admin__button, .admin__green-button, .admin__red-button, .admin__yellow-button {
   padding: 3rem;
   background-color: #15CD72;
@@ -969,6 +986,7 @@ textarea {
   border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
+  width: 20rem;
 }
 .admin__green-button {
   background-color: #15CD72;
@@ -1033,7 +1051,7 @@ textarea {
   padding: 2rem 0;
 }
 .admin__viewer {
-  min-width: 100rem;
+  width: 100rem;
   height: 80vh;
   overflow: scroll;
   padding: 5rem 0;

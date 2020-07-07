@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\AvailableTag;
 use Illuminate\Http\Request;
 use App\component;
 use App\ComponentList;
+use App\ComponentModuleDatafield;
 use App\ComponentTextfield;
 use App\TextData;
 use App\DataLink;
@@ -21,12 +23,13 @@ class ComponentController extends Controller
     {
         $component = Component::where('id', '=', $componentId)->firstOrFail();
         $datalinks = DataLink::where('component_id', '=', $component->id)->get();
+        $datafields = ComponentModuleDatafield::where('component_module_id', '=', $component->component_module_id)->orderby('index')->get();
         $page = Page::where('id', '=', $component->page_id)->firstOrFail();
         $textdatas = TextData::all();
         $imagedatas = ImageData::all();
+        $tags = AvailableTag::all();
 
-
-        return view('component.edit')->with(compact('component', 'datalinks', 'textdatas', 'imagedatas', 'page'));
+        return view('component.edit')->with(compact('component', 'datalinks', 'textdatas', 'imagedatas', 'page', 'datafields', 'tags'));
     }
 
     public function update(Component $component, Request $request)

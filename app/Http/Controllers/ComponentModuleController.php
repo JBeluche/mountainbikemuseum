@@ -42,7 +42,7 @@ class ComponentModuleController extends Controller
     public function edit($moduleId)
     {
         $module = ComponentModule::where('id', '=', $moduleId)->firstOrFail();
-        $datafields = ComponentModuleDatafield::where('component_module_id', '=', $moduleId)->get();
+        $datafields = ComponentModuleDatafield::where('component_module_id', '=', $moduleId)->orderby('index')->get();
         $tags = AvailableTag::all();
         
         return view('component_module.edit')->with(compact('module', 'datafields', 'tags'));
@@ -54,14 +54,15 @@ class ComponentModuleController extends Controller
         $module = ComponentModule::where('id', '=', $moduleId)->firstOrFail();
         $tags = AvailableTag::all();
 
-        $this->validate(request(), [
-            'name' => 'required',
-            'index' => 'required',
-            'tag_id' => 'required',
-        ]);
+    
 
         if($request->has('add')){
-        
+            
+            $this->validate(request(), [
+                'name' => 'required',
+                'index' => 'required',
+                'tag_id' => 'required',
+            ]);
 
             //Add new module data field
             $datafield = new ComponentModuleDatafield;
@@ -83,6 +84,7 @@ class ComponentModuleController extends Controller
             $datafield->save();
         }
 
+
         if($request->has('destroy')){
             $datafield = ComponentModuleDatafield::find(request('datafield_id'));
 
@@ -96,14 +98,14 @@ class ComponentModuleController extends Controller
             $datafield->index = request('index');
             $datafield->tag_id = request('tag_id');
 
-            $datafield->save();                    
+        $datafield->save();                    
         }
 
 
         $datafields = ComponentModuleDatafield::where('component_module_id', '=', $moduleId)->get();
 
 
-        return view('component_module.edit')->with(compact('module', 'datafields', 'tags'));
+        return redirect('/component_module/edit/' . $moduleId);
 
     }
 }
