@@ -56,6 +56,7 @@ class Component extends Model
                 $datalink->field_id = $component_module_datafield->id;
                 $datalink->imagedata_id = 1;
                 $datalink->textdata_id = 1;
+                $datalink->linkdata_id = 1;
                 $datalink->data_type = $component_module_datafield->data_type;
                 $datalink->component_id = $component->id;
 
@@ -67,17 +68,52 @@ class Component extends Model
                 {
                     /* HERE YOU CAN SEE ALL THE DIFFERENT TAGS, MIGHT CHANGE THOSE IF DATA CHANGES! */
                     if($component_module_datafield->tag_id == 1){
-                        $text = '<h1> {{ __(\'home.' . TextData::where('id', '=', $data_link->textdata_id)->firstOrFail()->key_name . '\') }} </h1>';
+                        $text = '<h1 class="heading-1  u-margin-bottom-big"> {{ __(\'home.' . TextData::where('id', '=', $data_link->textdata_id)->firstOrFail()->key_name . '\') }} </h1>';
                     }
                     elseif($component_module_datafield->tag_id == 2){
-                        $text = '<p> {{ __(\'home.' . TextData::where('id', '=', $data_link->textdata_id)->firstOrFail()->key_name . '\') }} </p>';
+                        $text = '<h2 class="heading-2-normal"> {{ __(\'home.' . TextData::where('id', '=', $data_link->textdata_id)->firstOrFail()->key_name . '\') }} </h2>';
+                    }
+                    elseif($component_module_datafield->tag_id == 3){
+                        $text = '<p class="paragraph-big__dark "> {{ __(\'home.' . TextData::where('id', '=', $data_link->textdata_id)->firstOrFail()->key_name . '\') }} </p>';
+                    }
+                    elseif($component_module_datafield->tag_id == 10){
+                        $text = '{{ __(\'home.' . TextData::where('id', '=', $data_link->textdata_id)->firstOrFail()->key_name . '\') }}';
                     }
 
                     array_push($datafields, $text);
                 }
+                elseif($component_module_datafield->data_type == 'tag_only')
+                {
+                    if($component_module_datafield->tag_id == 4){
+                        $text = '<br>';
+                    }
+                    elseif($component_module_datafield->tag_id == 8){
+                        $text = '<p class="paragraph-big__dark">';
+                    }
+                    elseif($component_module_datafield->tag_id == 9){
+                        $text = '</p>';
+                    }
+                    array_push($datafields, $text);
+                }
+
                 elseif($component_module_datafield->data_type == 'img')
                 {
-                    $text = ImageData::where('id', '=',  $data_link->imagedata_id)->firstOrFail()->filename;
+                    if($component_module_datafield->tag_id == 6){
+                        $text = '<img class="u-margin-bottom-big " style="width: 100%;" src="/img/' . ImageData::where('id', '=',  $data_link->imagedata_id)->firstOrFail()->filename . '">';
+                    }
+                    if($component_module_datafield->tag_id == 7){
+                        $text = '<img src="/img/' . ImageData::where('id', '=',  $data_link->imagedata_id)->firstOrFail()->filename . '">';
+                    }
+
+                    array_push($datafields, $text);
+                }
+                
+                elseif($component_module_datafield->data_type == 'link')
+                {
+                    if($component_module_datafield->tag_id == 5){
+                        $text = '<a class="link paragraph-big__dark" target="blank" href="' . LinkData::where('id', '=',  $data_link->linkdata_id)->firstOrFail()->link_name . '"> {{ __(\'home.' . TextData::where('id', '=', $data_link->textdata_id)->firstOrFail()->key_name . '\') }} </a>';
+                    }
+
                     array_push($datafields, $text);
                 }
 
@@ -86,7 +122,7 @@ class Component extends Model
         //Here you have the different blueprints. The data is put in the correct place
         if($module->component_module_blueprint_id == 1)
         {
-            $imploded_datafields = implode(",", $datafields);
+            $imploded_datafields = implode($datafields);
 
             $data_array = 
             '

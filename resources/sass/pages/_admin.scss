@@ -24,7 +24,7 @@
         grid-row-gap: 2rem;
         grid-column-gap: 5rem;
         grid-auto-columns: 100px;
-        grid-auto-flow: column;
+        grid-template-columns: repeat(4, 1fr);
 
         & :last-child{
             grid-column: 1 / -1;
@@ -258,7 +258,7 @@
 
             &--forms{
                 display: grid;
-                grid-template-columns: repeat(8, 1fr);
+                grid-template-columns: repeat(6, 1fr);
 
             }
         }

@@ -23,8 +23,6 @@
 
         @csrf
 
-        <label for="tag">Naam</label>
-        <input type="text" class="admin__input" name="name" value="{{$datafield->name}}"> 
         <input type="hidden" value="{{$datafield->id}}" name="datafield_id"> 
 
         <label for="index">Index</label>
@@ -53,8 +51,6 @@
     <form class="admin__modules-edit--forms" action="/component_module/edit/{{$module->id}}" method="POST">
 
         @csrf
-        <label for="tag">Naam</label>
-        <input type="text" name="name" class="admin__input" placeholder="Naam veld">
 
         <label for="tag">Index</label>
         <input name="index" type="numer" class="admin__input" placeholder="1">

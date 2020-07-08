@@ -61,6 +61,19 @@
                                 @endforeach
                             </select>
 
+                        @elseif ($datalink->data_type == 'link')
+                            <select name="linkdata[]">
+                                @foreach ($linkdatas as $linkdata)
+                                    <option {{$datalink->linkdata_id == $linkdata->id ? 'selected' : ''}} value="linkdata_id={{$linkdata->id}}&datalink_id={{$datalink->id}}">{{$linkdata->link_name}}</option>
+                                @endforeach
+                            </select>
+
+                            <select name="textdata[]" id='{{$datalink->id}}'>
+                                @foreach ($textdatas as $textdata)
+                                    <option {{$datalink->textdata_id == $textdata->id ? 'selected' : ''}} value="textdata_id={{$textdata->id}}&datalink_id={{$datalink->id}}">{{$textdata->key_name}}</option>
+                                @endforeach
+                            </select>
+
                         @endif
 
                 

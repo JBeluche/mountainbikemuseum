@@ -111,7 +111,6 @@ class PagesController extends Controller
         // Adding a component, if need be!
         /////
         if ($request->has('add_component')) {
-
             //Validate Data 
             $this->validate(request(), [
                 'name' => 'required',
@@ -135,6 +134,7 @@ class PagesController extends Controller
                 $data_link->data_type =  $module_field->data_type;
                 $data_link->imagedata_id = 1;
                 $data_link->textdata_id = 1;
+                $data_link->linkdata_id = 1;
                 $data_link->component_id = $component->id;
 
                 $data_link->save();

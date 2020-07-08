@@ -7,6 +7,7 @@ use App\ComponentModule;
 use App\ComponentModuleDatafield;
 use App\AvailableTag;
 use App\ComponentModuleBlueprint;
+use App\DataLink;
 
 
 class ComponentModuleController extends Controller
@@ -71,15 +72,8 @@ class ComponentModuleController extends Controller
             $datafield->index = request('index');
             $datafield->name = request('name');
 
-                //Get the data type from the tag
-                $tag = AvailableTag::where('id', '=', request('tag_id'))->firstOrFail();
-                if($tag->name == 'img'){
-                    $datafield->data_type = 'img';
-                }
-                else{
-                    $datafield->data_type = 'text';
-                }
-                
+            $tag = AvailableTag::where('id', '=', request('tag_id'))->firstOrFail();
+            $datafield->data_type = $tag->data_type;
 
             $datafield->save();
         }
@@ -87,20 +81,37 @@ class ComponentModuleController extends Controller
 
         if($request->has('destroy')){
             $datafield = ComponentModuleDatafield::find(request('datafield_id'));
+            $datalinks = DataLink::where('field_id', '=', request('datafield_id'))->get();
+            foreach($datalinks as $datalink)
+            {
+                $datalink->delete();
+            }
 
             $datafield->delete();
         }
 
         if($request->has('save')){
             $datafield = ComponentModuleDatafield::where('id', '=', request('datafield_id'))->firstOrFail();
+            $tag = AvailableTag::where('id', '=', request('tag_id'))->firstOrFail();
 
             $datafield->name = request('name');
             $datafield->index = request('index');
             $datafield->tag_id = request('tag_id');
+            $datafield->data_type = $tag->data_type;
 
-        $datafield->save();                    
+            $datafield->save(); 
+
+            //Refresh all datalinks data type
+            $datalinks = DataLink::where('field_id', '=', request('datafield_id'))->get();
+
+            foreach($datalinks as $datalink)
+            {
+                DataLink::where('id', '=', $datalink->id)->update(['data_type' => $datafield->data_type]);
+            }
+
         }
 
+        
 
         $datafields = ComponentModuleDatafield::where('component_module_id', '=', $moduleId)->get();
 

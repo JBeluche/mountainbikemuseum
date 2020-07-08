@@ -13,6 +13,7 @@ use App\DataLink;
 use App\ImageData;
 use DB;
 use App\Page;
+use App\LinkData;
 
 class ComponentController extends Controller
 {
@@ -28,12 +29,24 @@ class ComponentController extends Controller
         $textdatas = TextData::all();
         $imagedatas = ImageData::all();
         $tags = AvailableTag::all();
+        $linkdatas = LinkData::all();
 
-        return view('component.edit')->with(compact('component', 'datalinks', 'textdatas', 'imagedatas', 'page', 'datafields', 'tags'));
+        return view('component.edit')->with(compact('component', 'datalinks', 'textdatas', 'imagedatas', 'page', 'datafields', 'tags', 'linkdatas'));
     }
 
     public function update(Component $component, Request $request)
     {
+        if($request->has('linkdata'))
+        {
+            foreach(request('linkdata') as $linkdata)
+            {
+                parse_str($linkdata, $array); 
+    
+                $new_datalink = DataLink::where('id', '=', $array['datalink_id'])->update(['linkdata_id' => $array['linkdata_id']]);
+    
+            }
+        }
+
         if($request->has('textdata'))
         {
             foreach(request('textdata') as $textdata)

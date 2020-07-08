@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAvailableTagsTable extends Migration
+class CreateLinkDataTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateAvailableTagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('available_tags', function (Blueprint $table) {
+        Schema::create('link_data', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('data_type');
+            $table->string('link_name');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateAvailableTagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('available_tags');
+        Schema::dropIfExists('link_data');
     }
 }

@@ -400,6 +400,12 @@ html {
   font-style: italic;
 }
 
+.heading-2-normal {
+  color: #FF006E;
+  font-size: 3.5rem;
+  font-weight: bold;
+}
+
 .heading-3 {
   font-size: 2.2rem;
   color: #FF006E;
@@ -974,7 +980,7 @@ textarea {
   grid-row-gap: 2rem;
   grid-column-gap: 5rem;
   grid-auto-columns: 100px;
-  grid-auto-flow: column;
+  grid-template-columns: repeat(4, 1fr);
 }
 .admin__tile-form :last-child {
   grid-column: 1/-1;
@@ -1185,7 +1191,7 @@ textarea {
 }
 .admin__modules-edit--forms {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(6, 1fr);
 }
 
 .header-main {
@@ -3235,6 +3241,20 @@ textarea {
 .reopening-container {
   width: 100%;
   text-align: center;
+}
+
+.centered-text-and-images {
+  width: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+  padding: 5rem 0;
 }
 
 .row {
