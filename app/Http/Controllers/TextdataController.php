@@ -34,7 +34,7 @@ class TextdataController extends Controller
     {
         //Check if key_name already exist
         $this->validate(request(), [
-            'key_name' => 'unique:text_data|required',
+            'key_name' => 'unique:text_data|required|alpha_dash',
             'nl_text' => 'unique:text_data|required',
             'en_text' => 'unique:text_data|required',
             'de_text' => 'unique:text_data|required',
@@ -69,7 +69,7 @@ class TextdataController extends Controller
         } 
         else{
             $this->validate(request(), [
-                'key_name' => 'unique:text_data|required',
+                'key_name' => 'unique:text_data|required|alpha_dash',
                 ]);
         }
       

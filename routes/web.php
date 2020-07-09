@@ -33,7 +33,7 @@ Route::get('/payment/approval/{product}', 'PaymentController@approveSubscription
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 Route::get('/dashboard/subscripties', 'DashboardController@subscriptiesGet');
 Route::get('/dashboard/instellingen', 'DashboardController@instellingen');
-Route::get('/dashboard/help', 'DashboardController@help');
+Route::get('/dashboard/uitleg', 'DashboardController@help');
 
 //Pages management
 Route::get('/page/create', 'PagesController@create');

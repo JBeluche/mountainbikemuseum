@@ -9,11 +9,9 @@
 @parent
 
 
-<h1 class="admin__title">Component Editor</h1>
+<h1 class="admin__dashboards--titles header-main__admin">Component Editor</h1>
 
-<p>
-    Hier kun je aanpassing maken op de huidige component. Deze component is gekoppelt aan de {{$page->name}} pagina.
-</p>
+<p  class="paragraph-big__dark admin__dashboards--info">Hier kun je aanpassing maken op de huidige component. Deze component is gekoppelt aan de {{$page->name}} pagina.</p>
 
     <h1>{{$component->name}}</h1>
 
@@ -29,11 +27,11 @@
             @foreach($datafields as $datafield)
 
             @foreach ($datalinks as $datalink)
-            @csrf
+          
 
             @if ($datafield->id == $datalink->field_id)
-                
-            <div>
+          
+            <div class="admin__tile-form--item">
   
                     
                    
@@ -47,7 +45,7 @@
                         @endforeach
 
                         @if ($datalink->data_type == 'text')
-
+                        @csrf
                         <select name="textdata[]" id='{{$datalink->id}}'>
                                 @foreach ($textdatas as $textdata)
                                     <option {{$datalink->textdata_id == $textdata->id ? 'selected' : ''}} value="textdata_id={{$textdata->id}}&datalink_id={{$datalink->id}}">{{$textdata->key_name}}</option>
@@ -55,6 +53,7 @@
                             </select>
                             
                         @elseif ($datalink->data_type == 'img')
+                        @csrf
                             <select name="imagedata[]">
                                 @foreach ($imagedatas as $imagedata)
                                     <option {{$datalink->imagedata_id == $imagedata->id ? 'selected' : ''}} value="imagedata_id={{$imagedata->id}}&datalink_id={{$datalink->id}}">{{$imagedata->filename}}</option>
@@ -62,6 +61,7 @@
                             </select>
 
                         @elseif ($datalink->data_type == 'link')
+                        @csrf
                             <select name="linkdata[]">
                                 @foreach ($linkdatas as $linkdata)
                                     <option {{$datalink->linkdata_id == $linkdata->id ? 'selected' : ''}} value="linkdata_id={{$linkdata->id}}&datalink_id={{$datalink->id}}">{{$linkdata->link_name}}</option>

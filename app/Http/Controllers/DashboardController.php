@@ -50,6 +50,6 @@ class DashboardController extends Controller
         
     }
     public function help(){
-        
+        return view('dashboard.uitleg');
     }
 }

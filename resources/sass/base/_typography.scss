@@ -253,6 +253,13 @@ html{
     text-align: center;
 }
 
+/*For admin panel*/
+.header-main__admin{
+    color: $house-dark;
+    font-size: 6.5rem;
+    text-align: center;
+}
+
 /*For the sidebar and text component*/
 .sidebar{
     &__title{

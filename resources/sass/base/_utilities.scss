@@ -7,12 +7,17 @@
 .u-margin-bottom-big{margin-bottom: 8rem;}
 
 .u-margin-top-medium{margin-top: 4rem;}
+.u-margin-top-medium-big{margin-top: 6rem;}
 .u-margin-top-big{margin-top: 8rem;}
 
 .u-margin-top-bottom-medium{margin-top: 4rem; margin-bottom: 4rem;}
 .u-margin-top-bottom-small{margin-top: 1.5rem; margin-bottom: 1.5rem;}
 
 .u-padding-sides-big{padding-left: 8rem; padding-right: 8rem;}
+
+.padding-sides-6rem{
+  padding: 0 6rem;
+}
 
 .focus-fix{margin-top: 12rem;}
 
@@ -52,3 +57,8 @@
     z-index: 10;
   }
   
+  .to-center-horizon{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }

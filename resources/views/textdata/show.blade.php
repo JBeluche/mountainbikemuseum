@@ -10,9 +10,11 @@
 @parent
 
 
-<h1>Hier kun je de text data inzien</h1>
+<h1 class="admin__dashboards--titles header-main__admin">Text data</h1>
 
-<p>Filter:</p>
+<p  class="paragraph-big__dark admin__dashboards--info">Dit is de database voor alle text. Hiermee kun je de text toevoegen aan een component en wordt deze gelijk in alle talen weergegeven op de pagina.</p>
+
+
 <form action="/text_data/show" method="POST" class="admin__textdatas--filter-container">
 @csrf
     <select name="filter_id">
@@ -25,8 +27,7 @@
     <input value="Filter" class="admin__textdatas--filter-button" name="filter" type="submit">
 </form>
 
-<h1>Voeg een nieuwe text data key shizzle toe</h1>
-<a href="/text_data/create">Klik hier</a>
+<a class="to-center-horizon u-margin-top-medium-big admin__green-button" href="/text_data/create">Nieuw text data</a>
 
 <div class="admin__textdatas--container" >
 
@@ -45,15 +46,15 @@
             </select>
 
             <p class="paragraph-semibold-16__dark">Nederlands</p> 
-            <textarea class="paragraph-small__light" name="nl_text" type="text">{{$textdata->nl_text}}</textarea>
+            <textarea class="admin__textdatas--item--textarea paragraph-small__light" name="nl_text" type="text">{{$textdata->nl_text}}</textarea>
             <p class="paragraph-semibold-16__dark">Duits</p>
-            <textarea class="paragraph-small__light" name="de_text" type="text">{{$textdata->de_text}}</textarea>
+            <textarea class="admin__textdatas--item--textarea paragraph-small__light" name="de_text" type="text">{{$textdata->de_text}}</textarea>
             <p class="paragraph-semibold-16__dark">Engels</p>
-            <textarea  class="paragraph-small__light" name="en_text" type="text">{{$textdata->en_text}}</textarea>
+            <textarea  class="admin__textdatas--item--textarea paragraph-small__light" name="en_text" type="text">{{$textdata->en_text}}</textarea>
 
-            <input class="u-margin-top-bottom-small admin__textdatas--save" type="submit" value="Opslaan">
+            <input class="u-margin-top-bottom-small admin__green-button" type="submit" value="Opslaan">
             
-            <a class="admin__textdatas--delete" href="/text_data/delete/{{$textdata->id}}">Verwijderen</a>
+            <a class="admin__red-button" href="/text_data/delete/{{$textdata->id}}">Verwijderen</a>
         </form>
     @endforeach
 
