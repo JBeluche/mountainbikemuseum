@@ -74,7 +74,7 @@ class Component extends Model
                         $text = '<h2 class="heading-2-normal"> {{ __(\'home.' . TextData::where('id', '=', $data_link->textdata_id)->firstOrFail()->key_name . '\') }} </h2>';
                     }
                     elseif($component_module_datafield->tag_id == 3){
-                        $text = '<p class="paragraph-big__dark "> {{ __(\'home.' . TextData::where('id', '=', $data_link->textdata_id)->firstOrFail()->key_name . '\') }} </p>';
+                        $text = '<p class="u-padding-sides-big paragraph-big__dark "> {{ __(\'home.' . TextData::where('id', '=', $data_link->textdata_id)->firstOrFail()->key_name . '\') }} </p>';
                     }
                     elseif($component_module_datafield->tag_id == 10){
                         $text = '{{ __(\'home.' . TextData::where('id', '=', $data_link->textdata_id)->firstOrFail()->key_name . '\') }}';
@@ -88,10 +88,13 @@ class Component extends Model
                         $text = '<br>';
                     }
                     elseif($component_module_datafield->tag_id == 8){
-                        $text = '<p class="paragraph-big__dark">';
+                        $text = '<p class=" u-padding-sides-big paragraph-big__dark">';
                     }
                     elseif($component_module_datafield->tag_id == 9){
                         $text = '</p>';
+                    }
+                    elseif($component_module_datafield->tag_id == 11){
+                        $text = '<p class="u-margin-bottom-medium-small u-padding-sides-big"></p>';
                     }
                     array_push($datafields, $text);
                 }
@@ -102,7 +105,7 @@ class Component extends Model
                         $text = '<img class="u-margin-bottom-big " style="width: 100%;" src="/img/' . ImageData::where('id', '=',  $data_link->imagedata_id)->firstOrFail()->filename . '">';
                     }
                     if($component_module_datafield->tag_id == 7){
-                        $text = '<img src="/img/' . ImageData::where('id', '=',  $data_link->imagedata_id)->firstOrFail()->filename . '">';
+                        $text = '<img class="image-banner" src="/img/' . ImageData::where('id', '=',  $data_link->imagedata_id)->firstOrFail()->filename . '">';
                     }
 
                     array_push($datafields, $text);
@@ -111,7 +114,9 @@ class Component extends Model
                 elseif($component_module_datafield->data_type == 'link')
                 {
                     if($component_module_datafield->tag_id == 5){
-                        $text = '<a class="link paragraph-big__dark" target="blank" href="' . LinkData::where('id', '=',  $data_link->linkdata_id)->firstOrFail()->link_name . '"> {{ __(\'home.' . TextData::where('id', '=', $data_link->textdata_id)->firstOrFail()->key_name . '\') }} </a>';
+                        $text = '<a class="link paragraph-big__dark" target="blank" href="' . 
+                        LinkData::where('id', '=',  $data_link->linkdata_id)->firstOrFail()->link_name . 
+                        '"> {{ __(\'home.' . TextData::where('id', '=', $data_link->textdata_id)->firstOrFail()->key_name . '\') }} </a>';
                     }
 
                     array_push($datafields, $text);
@@ -168,7 +173,7 @@ class Component extends Model
 
 
         //Home header
-        if($module->id == 5)
+        if($module->id == 3)
         {
             $data =  
             '
@@ -199,7 +204,7 @@ class Component extends Model
 
 
         //A thick retro bar!
-        if($module->id == 2)
+        if($module->id == 4)
         {
             $data =  
             '

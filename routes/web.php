@@ -40,6 +40,7 @@ Route::get('/page/create', 'PagesController@create');
 Route::post('/page/create', 'PagesController@store');
 Route::get("/page/edit/{page}", "PagesController@edit");
 Route::post('/page/edit/{page}', 'PagesController@update');
+Route::get('/page/delete/{page}', 'PagesController@delete');
 Route::get('/page/updatefile/{page}', 'PagesController@update');
 Route::post('/page/show', 'PagesController@show');
 
@@ -47,12 +48,14 @@ Route::post('/page/show', 'PagesController@show');
 Route::get("/component/edit/{component}", "ComponentController@edit");
 Route::post("/component/edit/{component}", "ComponentController@update");
 Route::get("/component/delete/{component}", "ComponentController@delete");
+Route::get("/component/edit/index/{component}", "ComponentController@updateindex");
 
 //Component modules 
 Route::get("/component_module/show", "ComponentModuleController@show");
 Route::post("/component_module/create", "ComponentModuleController@store");
 Route::get("/component_module/edit/{componentmodule}", "ComponentModuleController@edit");
 Route::post("/component_module/edit/{componentmodule}", "ComponentModuleController@update");
+Route::get("/component_module/delete/{componentmodule}", "ComponentModuleController@delete");
 
 
 //Data text manager

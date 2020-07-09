@@ -27,6 +27,7 @@
             <form action="/component_module/edit/{{$module->id}}">
                 @csrf
                 <input class="admin__green-button" type="submit" value="Aanpassen">
+            <a class="admin__red-button" href="/component_module/delete/{{$module->id}}">Verwijderen </a>
             </form>
         </div>
         @endif

@@ -60,7 +60,6 @@ class ComponentModuleController extends Controller
         if($request->has('add')){
             
             $this->validate(request(), [
-                'name' => 'required',
                 'index' => 'required',
                 'tag_id' => 'required',
             ]);
@@ -70,7 +69,6 @@ class ComponentModuleController extends Controller
             $datafield->tag_id = request('tag_id');
             $datafield->component_module_id = $moduleId;
             $datafield->index = request('index');
-            $datafield->name = request('name');
 
             $tag = AvailableTag::where('id', '=', request('tag_id'))->firstOrFail();
             $datafield->data_type = $tag->data_type;
@@ -94,7 +92,6 @@ class ComponentModuleController extends Controller
             $datafield = ComponentModuleDatafield::where('id', '=', request('datafield_id'))->firstOrFail();
             $tag = AvailableTag::where('id', '=', request('tag_id'))->firstOrFail();
 
-            $datafield->name = request('name');
             $datafield->index = request('index');
             $datafield->tag_id = request('tag_id');
             $datafield->data_type = $tag->data_type;
@@ -118,5 +115,22 @@ class ComponentModuleController extends Controller
 
         return redirect('/component_module/edit/' . $moduleId);
 
+    }
+
+    public function delete($moduleId)
+    {
+        $module = ComponentModule::where('id', '=', $moduleId)->firstOrFail();
+
+        $component_module_datafields = ComponentModuleDatafield::where('component_module_id', '=', $module->id)->get();
+
+        foreach($component_module_datafields as $datafield)
+        {
+            $datafield->delete();
+        }
+
+        $module->delete();
+
+
+        return redirect('/component_module/show');
     }
 }

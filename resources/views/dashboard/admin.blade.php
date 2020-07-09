@@ -21,7 +21,8 @@
            <h3>{{$page->name}}</h3>
             <p>{{$page->lang}}</p>
            
-           <a href="/page/edit/{{$page->id}}">Edit</a>
+           <a class="admin__page--edit-link" href="/page/edit/{{$page->id}}">Edit</a>
+           <a class="admin__page--delete-link" href="/page/delete/{{$page->id}}">Delete</a>
 
        </div> 
 

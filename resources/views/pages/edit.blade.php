@@ -17,6 +17,11 @@
         @foreach ($components as $component)
         <li>
             <h2> {{$component->name}}</h2>
+
+        <form action="/component/edit/index/{{$component->id}}">
+            <input type="number" name="index" class="admin__input" placeholder="{{$component->index}}">
+        <input type="submit" class="admin__green-button" value="Opslaan">
+        </form>
             
             <a href="/component/edit/{{$component->id}}">Edit Component</a> 
             <a href="/component/delete/{{$component->id}}">Delete</a>
@@ -39,6 +44,7 @@
 
         </select>
 
+        <input type="number" name="index" class="admin__input" placeholder="index">
         <input class="admin__input" type="text" name="name" placeholder="Naam voor de pagina component">
         <input class="admin__green-button" type="submit" name="add_component" value="Voeg component toe">
     </form>

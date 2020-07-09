@@ -17,6 +17,7 @@ class CreateComponentsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('page_id');
             $table->unsignedBigInteger('component_module_id');
+            $table->int('index');
             $table->string('name');
             $table->timestamps();
 

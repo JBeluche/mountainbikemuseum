@@ -35,6 +35,9 @@ class TextdataController extends Controller
         //Check if key_name already exist
         $this->validate(request(), [
             'key_name' => 'unique:text_data|required',
+            'nl_text' => 'unique:text_data|required',
+            'en_text' => 'unique:text_data|required',
+            'de_text' => 'unique:text_data|required',
         ]);
 
         $textdata = new TextData;
@@ -54,14 +57,22 @@ class TextdataController extends Controller
 
     public function update(TextData $textdata)
     {
-        //Check if key doesnt already exist and if everything is submitted      
-        $this->validate(request(), [
-            'key_name' => 'unique:text_data|required',
-            'category_id' => 'required',
-            'en_text' => 'required',
-            'de_text' => 'required',
-            'nl_text' => 'required',
-            ]);
+        //Check if key doesnt already exist and if everything is submitted     
+        if(request('key_name') == $textdata->key_name)
+        {
+            $this->validate(request(), [
+                'category_id' => 'required',
+                'en_text' => 'required',
+                'de_text' => 'required',
+                'nl_text' => 'required',
+                ]);
+        } 
+        else{
+            $this->validate(request(), [
+                'key_name' => 'unique:text_data|required',
+                ]);
+        }
+      
 
             $textdata->key_name = request('key_name');
             $textdata->category_id = request('category_id');

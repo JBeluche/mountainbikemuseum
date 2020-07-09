@@ -34,6 +34,24 @@ class PagesController extends Controller
         return view('pages.create')->with(compact('navlinks'));
     }
 
+    public function delete($page_id)
+    {
+        $components = Component::where('page_id', '=', $page_id)->get();
+
+        foreach($components as $component)
+        {
+            $data_link = DataLink::where('component_id', '=', $component->id)->firstOrFail();
+            $data_link->delete();
+            $component->delete();
+        }
+
+        $page = Page::where('id', '=', $page_id)->firstOrFail();
+
+        $page->delete();
+
+        return redirect('/dashboard');
+    }
+
     public function store()
     {
 
@@ -91,7 +109,7 @@ class PagesController extends Controller
         //Get the page 
         $page = Page::where('id', '=', $pageId)->firstOrFail();
 
-        $components =  Component::where('page_id', '=', $pageId)->get();
+        $components =  Component::where('page_id', '=', $pageId)->orderBy('index')->get();
 
         //Get all the components 
         $componentModules = App\ComponentModule::all();
@@ -114,12 +132,14 @@ class PagesController extends Controller
             //Validate Data 
             $this->validate(request(), [
                 'name' => 'required',
+                'index' => 'required',
             ]);
 
             $component = new App\Component;
             $component->page_id = $pageId;
             $component->component_module_id = request('componentModuleId');
             $component->name = request('name');
+            $component->index = request('index');
 
             $component->save();
 
@@ -159,7 +179,7 @@ class PagesController extends Controller
         $fh = fopen($pageViewLocation, 'a');
 
         //Loop through all the page's components
-        $components = Component::where('page_id', '=', $pageId)->get();
+        $components = Component::where('page_id', '=', $pageId)->orderBy('index')->get();
 
         foreach ($components as $component) {
             //Foreach of them get there images and text

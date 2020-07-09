@@ -7,6 +7,10 @@
   margin-bottom: 1.5rem;
 }
 
+.u-margin-bottom-medium-small {
+  margin-bottom: 2rem;
+}
+
 .u-margin-bottom-medium {
   margin-bottom: 4rem;
 }
@@ -3254,7 +3258,13 @@ textarea {
           align-items: center;
   -webkit-box-pack: center;
           justify-content: center;
-  padding: 5rem 0;
+  text-align: center;
+  padding-bottom: 20rem;
+}
+
+.image-banner {
+  padding: 10rem;
+  width: 100%;
 }
 
 .row {

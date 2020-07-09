@@ -91,4 +91,18 @@ class ComponentController extends Controller
 
         return redirect('page/updatefile/' . $page_id);
     }
+
+    public function updateindex($componentId)
+    {
+
+        $this->validate(request(), [
+            'index' => 'required',
+        ]);
+
+        $component = Component::where('id', '=', $componentId)->update(['index' => request('index')]);
+        $component = Component::where('id', '=', $componentId)->firstOrFail();
+
+        return redirect('page/updatefile/' . $component->page_id);
+
+    }
 }
