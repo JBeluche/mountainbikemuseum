@@ -63,6 +63,6 @@
     </form>
 
     <form action="/page/updatefile/{{$page->id}}" method="GET">
-        <input class="u-margin-top-medium-big admin__green-button" type="submit" name="page_refresh" value="Refresh">
+        <input class="u-margin-top-bottom-medium admin__green-button" type="submit" name="page_refresh" value="Refresh">
     </form>
 @stop

@@ -35,9 +35,9 @@ class TextdataController extends Controller
         //Check if key_name already exist
         $this->validate(request(), [
             'key_name' => 'unique:text_data|required|alpha_dash',
-            'nl_text' => 'unique:text_data|required',
-            'en_text' => 'unique:text_data|required',
-            'de_text' => 'unique:text_data|required',
+            'nl_text' => 'required',
+            'en_text' => 'required',
+            'de_text' => 'required',
         ]);
 
         $textdata = new TextData;
@@ -88,7 +88,17 @@ class TextdataController extends Controller
 
     public function destroy(Textdata $textdata)
     {
-        $textdata->delete();
+        
+
+        try {
+            $textdata->delete();
+          
+          } catch (\Illuminate\Database\QueryException $e) {
+              
+            return redirect('/text_data/show')
+                ->withErrors(__('notifications.textdata_constraint'));
+
+          }
 
         return redirect('/text_data/show');
     }

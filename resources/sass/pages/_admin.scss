@@ -108,7 +108,8 @@
         }
 
         &--welcome {
-            padding: 2rem 0;
+            padding: 4rem 0;
+            color: $house-light;
         }
     }
 
@@ -116,6 +117,7 @@
         &--titles {
         }
         &--info {
+            padding: 0 5rem;
         }
     }
 
@@ -252,7 +254,7 @@
             width: 100%;
             padding: 15rem 7rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+            grid-template-columns: 1fr 1fr;
             grid-row-gap: 2rem;
             grid-column-gap: 4rem;
         }
@@ -274,7 +276,6 @@
         &--item {
             grid-template-columns: 1fr;
             grid-row-gap: 2rem;
-            border-radius: 2rem;
 
             display: grid;
             flex-direction: column;
@@ -283,6 +284,8 @@
             word-wrap: break-word;
             justify-content: center;
             align-items: center;
+            justify-items: center;
+            align-content: center;
 
             &--textarea {
                 //background-color: $admin-grey;
@@ -358,12 +361,24 @@
             display: grid;
             grid-template-columns: 1fr;
             grid-column-gap: 5rem;
-            grid-row-gap: 5rem;
+            grid-row-gap: 2rem;
+            padding: 5rem 0;
+        }
+
+        &--aanmaak-formulier{
+            display: grid;
+            grid-auto-flow: column;
+
+            &--item-3{
+                width: 100%;
+
+            }
+
         }
 
         &--item {
             padding: 4rem;
-            background-color: $house-light;
+            background-color: white;
         }
 
         &-edit {
@@ -482,5 +497,62 @@
                 grid-column: 4 / 5;
             }
         }
+    }
+
+    &__imagedata{
+
+        &--container{
+            padding: 5rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-row-gap: 2rem;
+            align-items: center;
+            justify-content: center;
+            align-content: center;
+            justify-items: center;
+        }
+
+        &--item{
+            width: 20rem;
+            height: 15rem;
+            background-color: white;
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            align-items: center;
+        }
+
+        &--delete{
+            background-color: $color-danger;
+            padding: 2rem;
+            text-decoration: none;
+            width: 100%;
+            line-height: 2.1;
+        }
+
+        &--file-form{
+            display: grid;
+            width: 70%;
+            grid-row-gap: 3rem;
+            padding: 5rem;
+            
+            align-items: center;
+            justify-content: center;
+            align-content: center;
+            justify-items: center;
+
+            &--wrapper{
+                width: 100%;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+        }
+    }
+
+    &__fileupload{
+        width: 100%;
     }
 }

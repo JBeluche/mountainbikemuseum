@@ -19,7 +19,9 @@ return [
     'payment_services_4' => 'Your subscription has been canceled!',
     'payment_services_5' => 'Something went wrong. Please, contact us! ',
     'payment_services_6' => 'We cannot authenticate you. Please, contact us! ',
-    'payment_services_7' => 'We could not find your payment. If you really paid, be sure to contact us! '
+    'payment_services_7' => 'We could not find your payment. If you really paid, be sure to contact us! ',
+
+
 
 
 ];

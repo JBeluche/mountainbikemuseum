@@ -9,13 +9,15 @@
 @parent
 
 
-<h1 class="admin__dashboards--titles header-main__admin">Component Editor</h1>
+<h1 class="admin__dashboards--titles header-main__admin u-margin-bottom-small">Component Editor</h1>
 
-<p  class="paragraph-big__dark admin__dashboards--info">Hier kun je aanpassing maken op de huidige component. Deze component is gekoppelt aan de {{$page->name}} pagina.</p>
+<p  class="paragraph-big__dark admin__dashboards--info u-margin-bottom-medium">Hier kun je aanpassing maken op de huidige component. Deze component is gekoppelt aan de {{$page->name}} pagina.</p>
 
-    <h1>{{$component->name}}</h1>
 
-    <h2>Pas elementen aan:</h2>
+
+    <h1 class="header-second__admin u-margin-bottom-small">{{$component->name}}</h1>
+
+    <h2 class="header-third__admin">Pas elementen aan:</h2>
 
     {{--Get all components fields, filter them by index
         for text you need a dropdown with all textdatas
@@ -56,7 +58,7 @@
                         @csrf
                             <select name="imagedata[]">
                                 @foreach ($imagedatas as $imagedata)
-                                    <option {{$datalink->imagedata_id == $imagedata->id ? 'selected' : ''}} value="imagedata_id={{$imagedata->id}}&datalink_id={{$datalink->id}}">{{$imagedata->filename}}</option>
+                                    <option {{$datalink->imagedata_id == $imagedata->id ? 'selected' : ''}} value="imagedata_id={{$imagedata->id}}&datalink_id={{$datalink->id}}">{{$imagedata->name}}</option>
                                 @endforeach
                             </select>
 
@@ -64,7 +66,7 @@
                         @csrf
                             <select name="linkdata[]">
                                 @foreach ($linkdatas as $linkdata)
-                                    <option {{$datalink->linkdata_id == $linkdata->id ? 'selected' : ''}} value="linkdata_id={{$linkdata->id}}&datalink_id={{$datalink->id}}">{{$linkdata->link_name}}</option>
+                                    <option {{$datalink->linkdata_id == $linkdata->id ? 'selected' : ''}} value="linkdata_id={{$linkdata->id}}&datalink_id={{$datalink->id}}">{{$linkdata->name}}</option>
                                 @endforeach
                             </select>
 

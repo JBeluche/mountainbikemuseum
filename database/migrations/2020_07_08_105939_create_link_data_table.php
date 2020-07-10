@@ -15,6 +15,7 @@ class CreateLinkDataTable extends Migration
     {
         Schema::create('link_data', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
             $table->string('link_name');
             $table->timestamps();
         });

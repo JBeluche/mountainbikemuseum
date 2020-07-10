@@ -57,7 +57,6 @@ Route::get("/component_module/edit/{componentmodule}", "ComponentModuleControlle
 Route::post("/component_module/edit/{componentmodule}", "ComponentModuleController@update");
 Route::get("/component_module/delete/{componentmodule}", "ComponentModuleController@delete");
 
-
 //Data text manager
 Route::get("/text_data/show", "TextdataController@show");
 Route::post("/text_data/show", "TextdataController@show");
@@ -65,6 +64,18 @@ Route::post("/text_data/edit/{textdata}", "TextdataController@update");
 Route::get('/text_data/create', 'TextdataController@create');
 Route::post('/text_data/create', 'TextdataController@store');
 Route::get('/text_data/delete/{textdata}', 'TextdataController@destroy');
+
+//Image data manager
+Route::get("/image_data/show", "ImagedataController@show");
+Route::get("/image_data/create", "ImagedataController@create");
+Route::post("/image_data/create", "ImagedataController@store");
+Route::get("/image_data/delete/{imagedate}", "ImagedataController@delete");
+
+//Link data manager
+Route::get("/link_data/show", "LinkdataController@show");
+Route::get("/link_data/create", "LinkdataController@create");
+Route::post("/link_data/create", "LinkdataController@store");
+Route::get("/link_data/delete/{linkdata}", "LinkdataController@delete");
 
 //Checkout process
 Route::post('/checkout/auth', 'CheckoutController@auth')->name('checkout-auth');

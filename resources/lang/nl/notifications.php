@@ -19,7 +19,13 @@ return [
     'payment_services_4' => 'Uw abonnement is geannuleerd!',
     'payment_services_5' => 'Er is iets verkeerd gegaan. Neem aub contact met ons op!',
     'payment_services_6' => 'We kunnen u niet authenticeren. Neem aub contact met ons op!',
-    'payment_services_7' => 'We kunnen uw betaling niet terug vinden. Heeft u toch echt betaald? Neem gerust contact met ons op!'
+    'payment_services_7' => 'We kunnen uw betaling niet terug vinden. Heeft u toch echt betaald? Neem gerust contact met ons op!',
+
+    //Dashboard
+    'textdata_constraint' => 'De data wordt nog ergens gebruikt! Zorg ervoor dat hij overal niet meer naar verwezen wordt.',
+    'imagedata_constraint' => 'De afbeelding wordt nog ergens gebruikt! Zorg ervoor dat hij overal niet meer naar verwezen wordt.',
+    'module_constraint' => 'Er zijn nog componenten actief die deze module gebruiken. Verwijder deze voordat je de module verwijdert!',
+    'linkdata_constraint' => 'Er zijn nog links actief. Verwijder deze eerst van elke component voordat je hem verwijdert!'
 
 
 ];

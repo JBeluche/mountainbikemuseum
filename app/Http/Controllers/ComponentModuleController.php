@@ -120,16 +120,16 @@ class ComponentModuleController extends Controller
     public function delete($moduleId)
     {
         $module = ComponentModule::where('id', '=', $moduleId)->firstOrFail();
+        
+        try {
+            $module->delete();
+          
+          } catch (\Illuminate\Database\QueryException $e) {
+              
+            return redirect('/text_data/show')
+                ->withErrors(__('notifications.module_constraint'));
 
-        $component_module_datafields = ComponentModuleDatafield::where('component_module_id', '=', $module->id)->get();
-
-        foreach($component_module_datafields as $datafield)
-        {
-            $datafield->delete();
-        }
-
-        $module->delete();
-
+          }
 
         return redirect('/component_module/show');
     }
