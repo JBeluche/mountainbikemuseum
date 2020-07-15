@@ -88,6 +88,29 @@ class ComponentModuleController extends Controller
             $datafield->delete();
         }
 
+        if($request->has('add_field')){
+
+            $datafields = ComponentModuleDatafield::where('index', '>', request('index'))->get();
+
+            foreach($datafields as $datafield)
+            {
+                $datafield->index = ($datafield->index + 1);
+                $datafield->save();
+            }
+
+            $new_datafield = new ComponentModuleDatafield;
+
+            $new_datafield->tag_id = 1;
+            $new_datafield->component_module_id = $moduleId;
+            $new_datafield->index = (request('index') + 1);
+            
+            $tag = AvailableTag::where('id', '=', 1)->firstOrFail();
+            $new_datafield->data_type = $tag->data_type;
+
+            $new_datafield->save();
+
+        }
+
         if($request->has('save')){
             $datafield = ComponentModuleDatafield::where('id', '=', request('datafield_id'))->firstOrFail();
             $tag = AvailableTag::where('id', '=', request('tag_id'))->firstOrFail();

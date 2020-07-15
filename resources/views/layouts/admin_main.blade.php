@@ -1,3 +1,7 @@
+
+
+@if (Auth::user() && Auth::user()->id == 7)
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -23,6 +27,7 @@
 
 <body>
 
+
     @include('layouts.navbar')
 
     <section class="admin__section">
@@ -44,5 +49,20 @@
 
 
     </section>
+    
 
     @include('layouts.footer')
+
+
+    @elseif(!Auth::user())
+
+    @include('layouts.forbiden')
+
+        
+    @elseif(Auth::user() && Auth::user()->id != 7)
+
+    @include('layouts.forbiden')
+
+
+    @endif
+

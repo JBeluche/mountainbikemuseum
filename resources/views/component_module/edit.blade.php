@@ -31,15 +31,19 @@
         <label for="tag">Tag</label>
         <select name="tag_id">
             @isset($tags)
-            @foreach ($tags as $tag)
-            <option value="{{$tag->id}}" {{$tag->id == $datafield->tag_id ? 'selected' : ''}}>{{$tag->name}}</option>
-            @endforeach
+                @foreach ($tags as $tag)
+                    <option value="{{$tag->id}}" {{$tag->id == $datafield->tag_id ? 'selected' : ''}}>{{$tag->name}}</option>
+                @endforeach
             @endisset
         </select>
 
 
         <input class="admin__yellow-button" type="submit" name="save" value="Opslaan"> 
         <input class="admin__red-button" type="submit" name="destroy" value="Verwijderen">
+
+        {{--Add an element between the two--}}
+        <input class="admin__blue-button grid-full-width" type="submit" name="add_field" value="Veld onder toevoegen">
+        
 
     </form>
 

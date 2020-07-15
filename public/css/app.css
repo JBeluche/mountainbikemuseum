@@ -1029,7 +1029,7 @@ textarea {
 .admin__tile-form--item h3 {
   align-self: center;
 }
-.admin__button, .admin__green-button, .admin__red-button, .admin__yellow-button {
+.admin__button, .admin__green-button, .admin__red-button, .admin__yellow-button, .admin__blue-button {
   padding: 2rem;
   background-color: #15CD72;
   border: none;
@@ -1049,6 +1049,9 @@ textarea {
 }
 .admin__yellow-button {
   background-color: #EDE04D;
+}
+.admin__blue-button {
+  background-color: #288feb;
 }
 .admin__input {
   border: 1px solid #344151;
@@ -1366,7 +1369,17 @@ textarea {
 }
 .admin__modules-edit--forms {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(7, 1fr);
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  align-content: center;
+  justify-items: center;
+}
+.admin__modules-edit--forms select, .admin__modules-edit--forms input {
+  width: 100%;
+  height: 100%;
 }
 .admin__component--show-container {
   display: grid;
