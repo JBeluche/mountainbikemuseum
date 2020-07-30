@@ -109,7 +109,3 @@ Route::get('/language/{language}', 'PagesController@language');
 
 Route::resource('page', 'PagesController');
  
-
-
-
-                                   

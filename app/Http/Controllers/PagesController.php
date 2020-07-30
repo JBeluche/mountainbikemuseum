@@ -22,6 +22,7 @@ use App\TextData;
 use App\DataLink;
 use App\ComponentModuleDatafield;
 use Symfony\Component\VarDumper\Cloner\Data;
+use App\View;
 
 class PagesController extends Controller
 {
@@ -47,7 +48,16 @@ class PagesController extends Controller
 
         $page = Page::where('id', '=', $page_id)->firstOrFail();
 
+        $page_de = Page::where('view', '=', $page->view)->where('lang', '=', 'de')->firstOrFail();
+        $page_en = Page::where('view', '=', $page->view)->where('lang', '=', 'en')->firstOrFail();
+
+        $view = View::where('name', '=', $page->view)->firstOrFail();
+
         $page->delete();
+        $page_de->delete();
+        $page_en->delete();
+        $view->delete();
+
 
         return redirect('/dashboard');
     }
@@ -57,51 +67,119 @@ class PagesController extends Controller
 
         //Validate Data 
         $this->validate(request(), [
-            'name' => 'required',
-            'nav_link_id' => 'required',
-            'lang' => 'required'
+            'name_de' => 'required|alpha_dash',
+            'name_en' => 'required|alpha_dash',
+            'name_nl' => 'required|alpha_dash',
+            'nav_link_id_de' => 'required',
+            'nav_link_id_en' => 'required',
+            'nav_link_id_nl' => 'required',
         ]);
+
+        //Check if the name is already in use
+        $pages = Page::all();
+
+        foreach($pages as $page)
+        {
+            if($page->name == request('name_nl') || $page->name == request('name_de') || $page->name == request('name_en'))
+            {
+                return redirect()->back()->with('message', 'Er is een dubbele naam, zorg ervoor dat ze niet overeen komen met al bestaande namen. Lukt het niet? Neem contact op met beheerder!');
+            }
+        }
 
         //Create the view for new page
         $view = new App\View;
-        $view->name = request('name');
+        $view->name = strtolower(request('name_nl'));
         $view->save();
 
-        $page = new Page;
+        $page_nl = new Page;
+        $page_de = new Page;
+        $page_en = new Page;
 
         //If navlink is self
         //Create a navlink
         //Else
-        if (request('nav_link_id') == 0) {
+        if (request('nav_link_id_nl') == 0) {
 
-            $navLink = new App\NavLink;
-            $navLink->name = request('name');
-            $navLink->lang = request('lang');
+            $navLinknl = new App\NavLink;
+            $navLinknl->name = request('name_nl');
+            $navLinknl->lang = 'nl';
+
+            $maxIndex = NavLink::max('index');
+            $navLinknl->index = ($maxIndex + 1);
+
+            $navLinknl->save();
+
+            $page_nl->nav_link_id = $navLinknl->id;
+        } else {
+
+            $page_nl->nav_link_id = request('nav_link_id_nl');
+
+        }
+
+        if (request('nav_link_id_de') == 0) {
+
+            $navLinkde = new App\NavLink;
+            $navLinkde->name = request('name_de');
+            $navLinkde->lang = 'de';
+
+            $maxIndex = NavLink::max('index');
+            $navLinkde->index = ($maxIndex + 1);
+            
+            $navLinkde->save();
+
+            $page_de->nav_link_id = $navLinkde->id;
+        } else {
+
+            $page_de->nav_link_id = request('nav_link_id_de');
+
+        }
+
+
+        if (request('nav_link_id_en') == 0) {
+
+            $navLinken = new App\NavLink;
+            $navLinken->name = request('name_en');
+            $navLinken->lang = 'en';
 
             //Reken uit wat de index moet zijn
             $maxIndex = NavLink::max('index');
-            $navLink->index = ($maxIndex + 1);
+            $navLinken->index = ($maxIndex + 1);
 
-            $navLink->save();
+            $navLinken->save();
 
-            $page->nav_link_id = $navLink->id;
+            $page_en->nav_link_id = $navLinken->id;
+
         } else {
-            $page->nav_link_id = request('nav_link_id');
+
+            $page_en->nav_link_id = request('nav_link_id_en');
+
         }
 
 
 
-        $page->name = request('name');
-        $page->lang = request('lang');
-        $page->view = $view->name;
+        $page_nl->name = request('name_nl');
+        $page_de->name = request('name_de');
+        $page_en->name = request('name_en');
 
-        $page->save();
+        $page_nl->lang = 'nl';
+        $page_de->lang = 'de';
+        $page_en->lang = 'en';
+
+        $page_nl->view = $view->name;
+        $page_de->view = $view->name;
+        $page_en->view = $view->name;
+
+        $page_nl->save();
+        $page_de->save();
+        $page_en->save();
 
         //Now you need to create the file.
 
         $basePath = base_path();
 
-        copy($basePath . "/resources/views/templates/template_top.blade.php", $basePath . "/resources/views/stored_pages/" . $page->name . ".blade.php");
+        copy($basePath . "/resources/views/templates/template_top.blade.php", $basePath . "/resources/views/stored_pages/" . $view->name . ".blade.php");
+
+        return redirect('dashboard');
     }
 
     public function edit($pageId)
@@ -122,7 +200,7 @@ class PagesController extends Controller
         //Setting up page information
         $page = Page::where('id', '=', $pageId)->firstOrFail();
         $basePath = base_path();
-        $pageViewLocation = $basePath . '/resources/views/stored_pages/' . $page->name . '.blade.php';
+        $pageViewLocation = $basePath . '/resources/views/stored_pages/' . $page->view . '.blade.php';
 
 
         ///// 
@@ -249,10 +327,7 @@ class PagesController extends Controller
     {
         //Gets all the needed element to display on all pages
         $pages = Page::all();
-        $components = $page->components()->get();
-        $listItems = ListItem::whereNull('list_item_id')
-            ->with('childrenListItems')
-            ->get();
+    
 
         //****************
         //  Look at what the page is and handlse acordingly
@@ -285,7 +360,7 @@ class PagesController extends Controller
         if (isset($page->name)) {
             $view = view('stored_pages.' . strtolower($page->name));
 
-            return $view->with(compact('pages', 'page', 'components', 'listItems', 'request'));
+            return $view->with(compact('pages', 'page', 'request'));
         }
         return redirect('home');
     }

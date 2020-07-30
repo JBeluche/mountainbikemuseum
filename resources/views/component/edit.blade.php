@@ -35,6 +35,7 @@
           
             <div class="admin__tile-form--item">
   
+                <p> Index: {{$datafield->index}} </p>
                     
                    
 

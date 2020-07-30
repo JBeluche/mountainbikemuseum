@@ -9,7 +9,7 @@
             <h1 class="heading-3 u-margin-bottom-small">{{ __('footer.correct') }}</h1>
             <ul class="paragraph-regular__light">
                 @foreach ($errors->all() as $error)
-                <li class="u-margin-bottom-small">{{ $error }}</li>
+                <li class="u-margin-bottom-small">{!! $error !!}</li>
                 @endforeach
             </ul>
             @endif

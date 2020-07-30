@@ -19,11 +19,12 @@
 
 @foreach ($images as $image)
 
+@if($image->id > 1)
     <div class="admin__imagedata--item">
         <h3>{{$image->name}}</h3>
         <a class="paragraph-big__light admin__imagedata--delete" href="/image_data/delete/{{$image->id}}">Verwijderen</a>
     </div>
-
+@endif
     
 @endforeach
 

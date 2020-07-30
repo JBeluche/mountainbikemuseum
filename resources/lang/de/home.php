@@ -1,5 +1,18 @@
 <?php
 
+
+$textsdata = App\TextData::all();
+$data = array();
+
+foreach($textsdata as $textdata){
+    $data[$textdata->key_name] = $textdata->de_text;
+}
+
+
+return $data;
+
+/*
+
 return [
 
     'welcome_1' => 'Mountainbike Museum',
@@ -34,3 +47,5 @@ return [
 
 
 ];
+
+*/

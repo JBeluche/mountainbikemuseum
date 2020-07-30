@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\AvailableTag;
 use Illuminate\Http\Request;
-use App\component;
+use App\Component;
 use App\ComponentList;
 use App\ComponentModuleDatafield;
 use App\ComponentTextfield;

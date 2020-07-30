@@ -6,7 +6,7 @@
     <div class="alert__wrapper alert__error" role="alert">
         <ul>
             @foreach($errors->all() as $error)
-            <li class="paragraph-semibold-16__light alert__item">{{$error}}</li>
+            <li class="paragraph-semibold-16__light alert__item">{!! $error !!}</li>
             @endforeach
         </ul>
         {{ session('status') }}
@@ -17,7 +17,7 @@
     <div class="alert__wrapper alert__succes" role="alert">
         <ul>
             @foreach(session()->get('success') as $message)
-            <li class="paragraph-semibold-16__light alert__item">{{ $message }}</li>
+            <li class="paragraph-semibold-16__light alert__item">{!! $message !!}</li>
             @endforeach
         </ul>
         {{ session('status') }}

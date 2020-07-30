@@ -23,7 +23,7 @@ class DashboardController extends Controller
     public function index()
     {
 
-        if(Auth::user()->id == 7)
+        if(Auth::user()->id == 8)
         {
 
             $pages = Page::all();

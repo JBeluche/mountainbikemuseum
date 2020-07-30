@@ -18,11 +18,11 @@
  
         <div class="admin__page-create--pagename-containers">
             <label class="admin__page-create--pagename-item-1">Page name Nederlands:<span class="required"></span></label>
-            <input class="admin__page-create--pagename-item-4 field-divided admin__input" type="text" name="name_nl" placeholder="Naam nederlands" /> 
+            <input onkeyup="this.value = this.value.toUpperCase();" class="admin__page-create--pagename-item-4 field-divided admin__input" type="text" name="name_nl" placeholder="Naam nederlands" /> 
             <label class="admin__page-create--pagename-item-2">Page name Duits:<span class="required"></span></label>
-            <input class="admin__page-create--pagename-item-5 field-divided admin__input" type="text" name="name_de" placeholder="Naam duits" /> 
+            <input onkeyup="this.value = this.value.toUpperCase();" class="admin__page-create--pagename-item-5 field-divided admin__input" type="text" name="name_de" placeholder="Naam duits" /> 
             <label class="admin__page-create--pagename-item-3">Page name Engels:<span class="required"></span></label>
-            <input class="admin__page-create--pagename-item-6 field-divided admin__input" type="text" name="name_en" placeholder="Naam engels" /> 
+            <input onkeyup="this.value = this.value.toUpperCase();" class="admin__page-create--pagename-item-6 field-divided admin__input" type="text" name="name_en" placeholder="Naam engels" /> 
         </div>
 
           
@@ -33,7 +33,7 @@
             <div class="admin__page-create--pagename-containers">
                 <label class="admin__page-create--pagename-item-1">Navigatie Link Nederlands<span class="required"></span></label>
                   
-                <select class="admin__page-create--pagename-item-4 admin__dropdowns" name="nav_link_id">
+                <select class="admin__page-create--pagename-item-4 admin__dropdowns" name="nav_link_id_nl">
                     <option value="0" selected>Alleen staande link</option>
 
                         @foreach ($navlinks as $navlink)
@@ -47,7 +47,7 @@
 
                 <label class="admin__page-create--pagename-item-2">Navigatie Link Duits<span class="required"></span></label>
                   
-                <select class="admin__page-create--pagename-item-5 admin__dropdowns" name="nav_link_id">
+                <select class="admin__page-create--pagename-item-5 admin__dropdowns" name="nav_link_id_de">
                     <option value="0" selected>Alleen staande link</option>
 
                         @foreach ($navlinks as $navlink)
@@ -61,7 +61,7 @@
 
                 <label class="admin__page-create--pagename-item-3">Navigatie Link Engels<span class="required"></span></label>
                   
-                <select class="admin__page-create--pagename-item-6 admin__dropdowns" name="nav_link_id">
+                <select class="admin__page-create--pagename-item-6 admin__dropdowns" name="nav_link_id_en">
                     <option value="0" selected>Alleen staande link</option>
 
                         @foreach ($navlinks as $navlink)

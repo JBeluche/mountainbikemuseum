@@ -571,3 +571,16 @@
         width: 100%;
     }
 }
+
+.image-banner{
+    
+}
+
+
+@media only screen and (max-width: $bp-medium){
+    .image-banner{
+        width: 100%;
+        padding: 10rem 0 !important;
+    }
+    
+    }

@@ -32,6 +32,9 @@
 <div class="admin__textdatas--container" >
 
     @foreach($textdatas as $textdata)
+
+@if($textdata->id > 1)
+
         <form class="admin__textdatas--item" action="/text_data/edit/{{$textdata->id}}" method="POST">
 
             @csrf
@@ -56,6 +59,8 @@
             
             <a class="admin__red-button" href="/text_data/delete/{{$textdata->id}}">Verwijderen</a>
         </form>
+
+        @endif
     @endforeach
 
 </div>

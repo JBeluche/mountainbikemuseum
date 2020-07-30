@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\TextCategory;
 use Illuminate\Http\Request;
 use App\TextData;
+use App\Component;
+use App\ComponentModuleDatafield;
+use App\DataLink;
+use App\Page;
+use App\ComponentModuleBlueprint;
 
 class TextdataController extends Controller
 {
@@ -88,7 +93,28 @@ class TextdataController extends Controller
 
     public function destroy(Textdata $textdata)
     {
-        
+        $datalinks = DataLink::where('textdata_id', '=', $textdata->id)->get();
+
+        $data = array();
+
+        foreach($datalinks as $datalink)
+        {
+            //Get component
+            $component = Component::where('id', '=', $datalink->component_id)->firstOrFail();
+            $module = ComponentModuleBlueprint::where('id', '=', $component->component_module_id)->firstOrFail();
+
+            //Get location
+            $field = ComponentModuleDatafield::where('id', '=', $datalink->field_id)->firstOrFail();
+            $page = Page::where('id', '=', $component->page_id)->firstOrFail();
+
+            $index = $field->index;
+            $component_name = $component->name;
+
+            $array[$page->name] = 'Pagina: ' . $page->name .'<br> Module: ' . $module->name . ' <br>  Component: ' . $component_name . ' <br> Index: ' . $index . '<br><br>';
+
+            $data = implode(',', $array);
+
+        }
 
         try {
             $textdata->delete();
@@ -96,7 +122,7 @@ class TextdataController extends Controller
           } catch (\Illuminate\Database\QueryException $e) {
               
             return redirect('/text_data/show')
-                ->withErrors(__('notifications.textdata_constraint'));
+                ->withErrors(__('De text wordt nog ergens gebruikt! Zorg ervoor dat hij overal niet meer naar verwezen wordt. <br> <br>' . $data));
 
           }
 

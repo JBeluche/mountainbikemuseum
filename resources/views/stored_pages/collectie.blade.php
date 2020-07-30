@@ -5,7 +5,6 @@
 
 
 
-
 @section('content')
     @parent
     
@@ -27,7 +26,7 @@
             <ul>
                        
                     <li id="no-js-slider-0" class="slide">
-                        <img  class="slide-image" src="img/collectie/fiets-display-1-min.jpg">
+                        <img  class="slide-image" src="/img/collectie/fiets-display-1-min.jpg">
                         <a class="prev" href="#no-js-slider-9">
                             <img src="img/svg/arrow_1.svg" alt="An icon of an arrow pointing to the left"></a>                        
                         <a class="next" href="#no-js-slider-1">
@@ -35,7 +34,7 @@
                     </li>
 
                     <li id="no-js-slider-1" class="slide">
-                        <img  class="slide-image" src="img/collectie/fiets-display-2-min.jpg">
+                        <img  class="slide-image" src="/img/collectie/fiets-display-2-min.jpg">
                         <a class="prev" href="#no-js-slider-0">
                             <img src="img/svg/arrow_1.svg" alt="An icon of an arrow pointing to the left"></a>                        
                         <a class="next" href="#no-js-slider-2">
@@ -43,7 +42,7 @@
                     </li>
                     
                     <li id="no-js-slider-2" class="slide">
-                        <img  class="slide-image" src="img/collectie/fiets-display-3-min.jpg">
+                        <img  class="slide-image" src="/img/collectie/fiets-display-3-min.jpg">
                         <a class="prev" href="#no-js-slider-1">
                             <img src="img/svg/arrow_1.svg" alt="An icon of an arrow pointing to the left"></a>                        
                         <a class="next" href="#no-js-slider-3">
@@ -51,7 +50,7 @@
                     </li>
 
                     <li id="no-js-slider-3" class="slide">
-                        <img  class="slide-image" src="img/collectie/fiets-display-4-min.jpg">
+                        <img  class="slide-image" src="/img/collectie/fiets-display-4-min.jpg">
                         <a class="prev" href="#no-js-slider-2">
                             <img src="img/svg/arrow_1.svg" alt="An icon of an arrow pointing to the left"></a>                        
                         <a class="next" href="#no-js-slider-4">
@@ -59,7 +58,7 @@
                     </li>
 
                     <li id="no-js-slider-4" class="slide">
-                        <img  class="slide-image" src="img/collectie/fiets-display-5-min.jpg">
+                        <img  class="slide-image" src="/img/collectie/fiets-display-5-min.jpg">
                         <a class="prev" href="#no-js-slider-3">
                             <img src="img/svg/arrow_1.svg" alt="An icon of an arrow pointing to the left"></a>                        
                         <a class="next" href="#no-js-slider-5">
@@ -67,7 +66,7 @@
                     </li>
 
                     <li id="no-js-slider-5" class="slide">
-                        <img  class="slide-image" src="img/collectie/fiets-display-6-min.jpg">
+                        <img  class="slide-image" src="/img/collectie/fiets-display-6-min.jpg">
                         <a class="prev" href="#no-js-slider-4">
                             <img src="img/svg/arrow_1.svg" alt="An icon of an arrow pointing to the left"></a>                        
                         <a class="next" href="#no-js-slider-6">
@@ -75,7 +74,7 @@
                     </li>
 
                     <li id="no-js-slider-6" class="slide">
-                        <img  class="slide-image" src="img/collectie/fiets-display-7-min.jpg">
+                        <img  class="slide-image" src="/img/collectie/fiets-display-7-min.jpg">
                         <a class="prev" href="#no-js-slider-5">
                             <img src="img/svg/arrow_1.svg" alt="An icon of an arrow pointing to the left"></a>                        
                         <a class="next" href="#no-js-slider-7">
@@ -83,7 +82,7 @@
                     </li>
 
                     <li id="no-js-slider-7" class="slide">
-                        <img  class="slide-image" src="img/collectie/fiets-display-8-min.jpg">
+                        <img  class="slide-image" src="/img/collectie/fiets-display-8-min.jpg">
                         <a class="prev" href="#no-js-slider-6">
                             <img src="img/svg/arrow_1.svg" alt="An icon of an arrow pointing to the left"></a>                        
                         <a class="next" href="#no-js-slider-8">
@@ -91,7 +90,7 @@
                     </li>
 
                     <li id="no-js-slider-8" class="slide">
-                        <img  class="slide-image" src="img/collectie/fiets-display-9-min.jpg">
+                        <img  class="slide-image" src="/img/collectie/fiets-display-9-min.jpg">
                         <a class="prev" href="#no-js-slider-7">
                             <img src="img/svg/arrow_1.svg" alt="An icon of an arrow pointing to the left"></a>                        
                         <a class="next" href="#no-js-slider-9">
@@ -99,7 +98,7 @@
                     </li>
 
                     <li id="no-js-slider-9" class="slide">
-                        <img  class="slide-image" src="img/collectie/fiets-display-10-min.jpg">
+                        <img  class="slide-image" src="/img/collectie/fiets-display-10-min.jpg">
                         <a class="prev" href="#no-js-slider-8">
                             <img src="img/svg/arrow_1.svg" alt="An icon of an arrow pointing to the left"></a>                        
                         <a class="next" href="#no-js-slider-0">
